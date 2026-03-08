@@ -21,7 +21,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--td);overflow-x:hidden}
 
-/* ── LOADING ── */
+/* LOADING */
 #loading{position:fixed;inset:0;background:var(--cream);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .5s}
 #loading.hidden{opacity:0;pointer-events:none}
 .loader-paw{font-size:48px;animation:pawBounce 1s ease-in-out infinite}
@@ -29,12 +29,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--td);ov
 .loader-text{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--tm);animation:pulse 1.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
 
-/* ── ERROR ── */
+/* ERROR */
 #error{display:none;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:40px}
 #error h2{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--terra)}
 #error p{color:var(--tl);font-size:16px}
 
-/* ── NAV ── */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,246,240,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,96,58,.08)}
 @media(max-width:640px){nav{padding:0 20px}}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -45,18 +45,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .nav-wa:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,.4)}
 .nav-wa svg{width:15px;height:15px;fill:white}
 
-/* ── HERO ── */
+/* HERO */
 .hero{padding:110px 48px 60px;max-width:860px;margin:0 auto;text-align:center;animation:fadeUp .7s ease both}
 @media(max-width:640px){.hero{padding:100px 24px 48px}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
 .offer-badge{display:inline-flex;align-items:center;gap:8px;background:var(--terra-p);border:1px solid rgba(200,96,58,.2);color:var(--terra);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:6px 16px;border-radius:50px;margin-bottom:24px}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,58px);font-weight:700;line-height:1.1;color:var(--td);margin-bottom:12px}
 .hero h1 em{font-style:italic;color:var(--terra)}
 .hero h1 strong{color:var(--brown)}
 .hero-sub{font-size:17px;color:var(--tl);line-height:1.7;max-width:520px;margin:0 auto 32px}
-
-/* Dog info card */
 .dog-card{background:white;border-radius:22px;padding:24px 32px;display:inline-flex;align-items:center;gap:20px;box-shadow:0 12px 48px var(--shl);margin-bottom:16px;animation:fadeUp .7s .15s ease both}
 @media(max-width:480px){.dog-card{flex-direction:column;text-align:center;padding:20px}}
 .dog-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--terra-p),#f9d4c0);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
@@ -66,8 +63,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .dog-meta{font-size:13px;color:var(--tl);margin-top:3px;display:flex;flex-wrap:wrap;gap:12px}
 @media(max-width:480px){.dog-meta{justify-content:center}}
 .dog-meta span{display:flex;align-items:center;gap:4px}
-
-/* Countdown */
 .countdown-wrap{background:var(--forest);border-radius:18px;padding:18px 28px;display:inline-flex;align-items:center;gap:16px;animation:fadeUp .7s .25s ease both;margin-top:8px}
 @media(max-width:480px){.countdown-wrap{flex-direction:column;gap:10px;padding:16px 20px}}
 .cd-label{font-size:13px;color:rgba(255,255,255,.6);font-weight:500}
@@ -77,77 +72,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .cd-text{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;display:block;margin-top:2px}
 .cd-sep{font-size:22px;color:rgba(255,255,255,.2);align-self:center;padding-bottom:12px}
 
-/* ── TARIFF SECTION ── */
+/* SECTION */
 .section{max-width:900px;margin:0 auto;padding:0 48px 80px}
 @media(max-width:640px){.section{padding:0 20px 60px}}
-
 .section-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--terra);margin-bottom:14px;justify-content:center}
 .section-label::before,.section-label::after{content:'';flex:1;height:1px;background:rgba(200,96,58,.2)}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--td);text-align:center;margin-bottom:8px;line-height:1.15}
 .section-sub{font-size:15px;color:var(--tl);text-align:center;margin-bottom:48px;line-height:1.65}
 
-/* Tariff cards grid */
-.tariffs-grid{display:grid;gap:24px}
-.tariffs-grid.two{grid-template-columns:1fr 1fr}
-.tariffs-grid.three{grid-template-columns:1fr 1fr 1fr}
-@media(max-width:860px){.tariffs-grid.three{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.tariffs-grid.two,.tariffs-grid.three{grid-template-columns:1fr}}
+/* ── VARIANT A: GUIDED STEPS ── */
+.guided-wrap{margin-bottom:40px}
+.guided-question{background:white;border-radius:24px;padding:32px;box-shadow:0 8px 32px var(--sh);text-align:center;margin-bottom:24px}
+.guided-question.done{display:none}
+.guided-q-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--terra);margin-bottom:10px}
+.guided-q-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--td);margin-bottom:24px}
+.guided-choices{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.guided-choice{flex:1;min-width:200px;max-width:280px;border:2px solid rgba(61,43,31,.12);border-radius:18px;padding:24px 20px;cursor:pointer;transition:all .25s;background:white;text-align:left}
+.guided-choice:hover{border-color:var(--terra);transform:translateY(-3px);box-shadow:0 8px 24px var(--sh)}
+.guided-choice.selected{border-color:var(--terra);background:var(--terra-p)}
+.gc-icon{font-size:32px;margin-bottom:12px;display:block}
+.gc-title{font-size:15px;font-weight:700;color:var(--td);margin-bottom:4px}
+.gc-sub{font-size:12.5px;color:var(--tl);line-height:1.5}
+.gc-price{font-size:12px;font-weight:700;color:var(--terra);margin-top:8px}
+.guided-back{background:none;border:none;color:var(--tl);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;margin:0 auto 20px;padding:8px 12px;border-radius:8px;transition:color .2s}
+.guided-back:hover{color:var(--terra)}
+.guided-result-label{text-align:center;font-size:13px;color:var(--tl);margin-bottom:20px;padding:10px 20px;background:var(--sage-p);border-radius:50px;display:inline-block}
+.guided-result-wrap{text-align:center;margin-bottom:16px}
 
-/* Single tariff card */
-.tariff-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px var(--sh);transition:transform .25s,box-shadow .25s;position:relative;animation:fadeUp .6s ease both}
-.tariff-card:hover{transform:translateY(-4px);box-shadow:0 16px 52px var(--shl)}
-.tariff-card.recommended{border:2px solid var(--terra);box-shadow:0 12px 48px rgba(200,96,58,.2)}
+/* ── VARIANT B: EMPFEHLUNG BANNER ── */
+.rec-banner{background:linear-gradient(135deg,var(--terra),var(--amber));border-radius:20px;padding:24px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.rec-banner-text{color:white}
+.rec-banner-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-bottom:6px}
+.rec-banner-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:white;margin-bottom:4px}
+.rec-banner-sub{font-size:13px;color:rgba(255,255,255,.8)}
+.rec-banner-btn{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--terra);text-decoration:none;padding:12px 22px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.rec-banner-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.rec-banner-btn svg{width:15px;height:15px;fill:var(--wa)}
 
-.rec-badge{position:absolute;top:16px;right:16px;background:var(--terra);color:white;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:50px}
+/* ── VARIANT C: STICKY HIGHLIGHT ── */
+.sticky-rec{position:sticky;top:76px;z-index:90;background:var(--forest);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:14px;margin-bottom:28px;box-shadow:0 4px 20px rgba(0,0,0,.2);flex-wrap:wrap}
+.sticky-rec-text{color:white;font-size:13px;display:flex;align-items:center;gap:10px}
+.sticky-rec-name{font-weight:700;color:var(--amber)}
+.sticky-rec-btn{display:inline-flex;align-items:center;gap:7px;background:var(--wa);color:white;text-decoration:none;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.sticky-rec-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(37,211,102,.4)}
+.sticky-rec-btn svg{width:14px;height:14px;fill:white}
 
-.tariff-header{padding:28px 28px 20px;background:linear-gradient(135deg,var(--terra-p) 0%,rgba(250,246,240,0) 100%)}
-.tariff-card.recommended .tariff-header{background:linear-gradient(135deg,rgba(200,96,58,.12) 0%,rgba(250,246,240,0) 100%)}
-.tariff-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--terra);margin-bottom:6px}
-.tariff-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--td)}
-.tariff-price-wrap{display:flex;align-items:baseline;gap:4px;margin-top:14px}
-.tariff-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--td);line-height:1}
-.tariff-price-cents{font-size:24px;font-weight:600;color:var(--td)}
-.tariff-price-per{font-size:13px;color:var(--tl);margin-left:4px}
-
-.tariff-body{padding:20px 28px 28px}
-.tariff-features{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
-.tf{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--tm);line-height:1.4}
-.tf-dot{width:20px;height:20px;border-radius:50%;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--sage);flex-shrink:0;margin-top:1px}
-.tariff-card.recommended .tf-dot{background:rgba(200,96,58,.12);color:var(--terra)}
-
-.tariff-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:14px;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer;transition:all .2s;border:none}
-.tariff-cta.primary{background:var(--wa);color:white;box-shadow:0 6px 20px rgba(37,211,102,.35)}
-.tariff-cta.primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.5)}
-.tariff-cta.secondary{background:var(--cream);color:var(--tm);border:1.5px solid rgba(61,43,31,.12)}
-.tariff-cta.secondary:hover{border-color:var(--terra);color:var(--terra)}
-.tariff-cta svg{width:16px;height:16px;fill:currentColor}
-
-/* Detail rows */
-.detail-rows{border-top:1px solid rgba(61,43,31,.06);padding-top:16px;margin-top:4px;display:flex;flex-direction:column;gap:8px}
-.dr{display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
-.dr-label{color:var(--tl)}
-.dr-val{font-weight:600;color:var(--td)}
-
-
-/* ── FILTER BAR ── */
-.filter-bar{background:white;border-radius:24px;padding:28px 32px;box-shadow:0 8px 32px var(--sh);margin-bottom:40px}
-@media(max-width:640px){.filter-bar{padding:20px 16px}}
-.filter-bar-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin-bottom:20px;text-align:center}
-.filter-groups{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
-@media(max-width:640px){.filter-groups{flex-direction:column;gap:20px;align-items:center}}
-.filter-group{display:flex;flex-direction:column;gap:10px;align-items:center}
-.filter-group-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--terra)}
-.filter-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.filter-pill{display:flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;border:1.5px solid rgba(61,43,31,.15);background:white;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;transition:all .2s;user-select:none}
-.filter-pill:hover{border-color:var(--terra);color:var(--terra)}
-.filter-pill.active{background:var(--terra);border-color:var(--terra);color:white;box-shadow:0 4px 14px rgba(200,96,58,.3)}
-.filter-pill .pill-icon{font-size:15px}
-
-/* ── COMPARISON TABLE ── */
+/* COMPARISON TABLE */
 .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:20px;box-shadow:0 8px 40px var(--shl)}
 .compare-table{width:100%;border-collapse:collapse;background:white;min-width:520px}
-
-/* Header row */
 .ct-head{background:var(--forest)}
 .ct-head th{padding:20px 16px;text-align:center;color:white;font-size:13px;font-weight:600;letter-spacing:.03em;border-right:1px solid rgba(255,255,255,.08)}
 .ct-head th:first-child{text-align:left;width:200px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);border-right:1px solid rgba(255,255,255,.1)}
@@ -157,9 +129,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .ct-tarif-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--amber);display:block;margin-top:8px;line-height:1}
 .ct-tarif-price-sub{font-size:11px;color:rgba(255,255,255,.4);display:block;margin-top:2px}
 .ct-rec-badge{display:inline-block;background:var(--terra);color:white;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:50px;margin-bottom:6px}
-.ct-head th.recommended{background:rgba(200,96,58,.25);position:relative}
-
-/* Body rows */
+.ct-head th.recommended{background:rgba(200,96,58,.25)}
 .ct-row{border-bottom:1px solid rgba(61,43,31,.06);transition:background .15s}
 .ct-row:hover{background:rgba(250,246,240,.6)}
 .ct-row:last-child{border-bottom:none}
@@ -167,13 +137,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .ct-row td:first-child{text-align:left;font-size:12.5px;font-weight:600;color:var(--tl);border-right:1px solid rgba(61,43,31,.08);background:rgba(250,246,240,.5)}
 .ct-row td:last-child{border-right:none}
 .ct-row td.recommended{background:rgba(200,96,58,.04)}
-.ct-row td.recommended td:first-child{background:none}
 .ct-check{color:var(--sage);font-size:16px}
 .ct-cross{color:#DDD;font-size:14px}
 .ct-val{font-weight:600;color:var(--td)}
 .ct-val.highlight{color:var(--terra);font-weight:700}
-
-/* CTA row */
 .ct-cta-row td{padding:20px 16px;background:rgba(250,246,240,.8);border-top:2px solid rgba(61,43,31,.06)}
 .ct-cta-row td:first-child{background:rgba(250,246,240,.8)}
 .ct-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
@@ -182,11 +149,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .ct-btn.secondary{background:white;color:var(--tm);border:1.5px solid rgba(61,43,31,.12)}
 .ct-btn.secondary:hover{border-color:var(--terra);color:var(--terra)}
 .ct-btn svg{width:15px;height:15px;fill:currentColor}
-
 .no-results{display:none;text-align:center;padding:48px 20px;color:var(--tl);font-size:15px;background:white;border-radius:20px}
 .no-results.visible{display:block}
 
-/* ── WHY US ── */
+/* WHY */
 .why{background:var(--forest);padding:80px 48px;position:relative;overflow:hidden}
 @media(max-width:640px){.why{padding:60px 24px}}
 .why::before{content:'🐾';position:absolute;right:-20px;bottom:-30px;font-size:200px;opacity:.04;pointer-events:none}
@@ -202,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .wi-title{font-size:15px;font-weight:700;color:white;margin-bottom:6px}
 .wi-text{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
 
-/* ── REVIEWS ── */
+/* REVIEWS */
 .reviews{padding:80px 48px}
 @media(max-width:640px){.reviews{padding:60px 24px}}
 .reviews-in{max-width:860px;margin:0 auto}
@@ -216,7 +182,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .rc-name{font-size:13px;font-weight:700;color:var(--td)}
 .rc-date{font-size:11px;color:var(--tl)}
 
-/* ── FINAL CTA ── */
+/* FINAL CTA */
 .final-cta{background:linear-gradient(135deg,var(--terra) 0%,var(--amber) 100%);padding:80px 48px;text-align:center;position:relative;overflow:hidden}
 @media(max-width:640px){.final-cta{padding:60px 24px}}
 .final-cta::before{content:'🐾';position:absolute;left:-20px;top:-20px;font-size:160px;opacity:.07;pointer-events:none}
@@ -228,15 +194,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .fc-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.25)}
 .fc-btn svg{width:20px;height:20px;fill:var(--wa)}
 .fc-note{font-size:13px;color:rgba(255,255,255,.65);margin-top:16px}
-
-/* ── FOOTER ── */
 footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 @media(max-width:640px){footer{padding:24px 20px;flex-direction:column;text-align:center}}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:rgba(255,255,255,.8)}
 .footer-logo span{color:var(--terra-l)}
 .footer-text{font-size:12px;color:rgba(255,255,255,.4)}
-
-/* WhatsApp float */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:50;background:var(--wa);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);transition:all .25s;text-decoration:none}
 .wa-float:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.6)}
 .wa-float svg{width:28px;height:28px;fill:white}
@@ -246,13 +208,11 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loading">
   <div class="loader-paw">🐾</div>
   <div class="loader-text">Lade dein Angebot…</div>
 </div>
 
-<!-- ERROR -->
 <div id="error" style="display:none;flex-direction:column">
   <div style="font-size:64px">🐾</div>
   <h2>Angebot nicht gefunden</h2>
@@ -263,12 +223,9 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   </a>
 </div>
 
-<!-- MAIN CONTENT (hidden until data loaded) -->
 <div id="main" style="display:none">
-
-<!-- NAV -->
 <nav>
-  <a class="logo" href="/">
+  <a class="logo" href="/pfoten-allianz/">
     <div class="logo-icon">🐾</div>
     <div class="logo-name">Pfoten<span>-Allianz</span></div>
   </a>
@@ -278,12 +235,10 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   </a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="offer-badge">🐾 Persönliches Angebot</div>
   <h1>Hallo <em id="vorname">…</em>,<br>hier ist dein Angebot für <strong id="hundename-title">…</strong></h1>
   <p class="hero-sub">Wir haben die besten Allianz-Tarife speziell für <span id="hundename-sub">…</span> analysiert – persönlich, ehrlich, ohne Verkaufsdruck.</p>
-
   <div class="dog-card">
     <div class="dog-icon">🐕</div>
     <div class="dog-info">
@@ -295,11 +250,8 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
       </div>
     </div>
   </div>
-
   <div class="countdown-wrap" id="countdown-wrap" style="display:none">
-    <div>
-      <div class="cd-label">⏰ Angebot gültig noch</div>
-    </div>
+    <div><div class="cd-label">⏰ Angebot gültig noch</div></div>
     <div class="cd-timer">
       <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-text">Tage</span></div>
       <div class="cd-sep">:</div>
@@ -315,52 +267,66 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   </div>
 </section>
 
-<!-- TARIFFS -->
 <section class="section" id="tariffs-section">
   <div class="section-label">Unsere Empfehlung</div>
   <h2 class="section-title">Deine Tarif-Optionen</h2>
-  <p class="section-sub" id="tariff-intro">Speziell ausgewählt für <span id="hundename-tariff">…</span> – vergleiche und entscheide in Ruhe.</p>
+  <p class="section-sub">Speziell ausgewählt für <span id="hundename-tariff">…</span> – vergleiche und entscheide in Ruhe.</p>
 
-  <!-- FILTER BAR -->
-  <div class="filter-bar" id="filter-bar" style="display:none">
-    <div class="filter-bar-title">🔍 Tarif konfigurieren</div>
-    <div class="filter-groups">
-      <div class="filter-group">
-        <div class="filter-group-label">Art der Absicherung</div>
-        <div class="filter-pills" id="filter-art">
-          <div class="filter-pill active" data-filter="art" data-value="alle" onclick="setFilter('art','alle',this)">
-            <span class="pill-icon">🐾</span> Alle
-          </div>
-          <div class="filter-pill" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
-            <span class="pill-icon">🏥</span> Krankenversicherung
-          </div>
-          <div class="filter-pill" data-filter="art" data-value="op" onclick="setFilter('art','op',this)">
-            <span class="pill-icon">🔬</span> OP-Versicherung
-          </div>
-        </div>
+  <!-- VARIANT A: Guided Steps (shown when variant=A or default) -->
+  <div id="variant-a" style="display:none">
+    <div class="guided-wrap">
+      <!-- Step 1 -->
+      <div class="guided-question" id="guided-step1">
+        <div class="guided-q-label">Schritt 1 von 1</div>
+        <div class="guided-q-title">Was ist dir bei der Absicherung von <span class="hn-guided">…</span> wichtiger?</div>
+        <div class="guided-choices" id="guided-choices"></div>
       </div>
-      <div class="filter-group">
-        <div class="filter-group-label">Selbstbeteiligung</div>
-        <div class="filter-pills" id="filter-sb">
-          <div class="filter-pill active" data-filter="sb" data-value="alle" onclick="setFilter('sb','alle',this)">
-            <span class="pill-icon">✨</span> Alle
-          </div>
-          <div class="filter-pill" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
-            <span class="pill-icon">✅</span> Ohne Selbstbeteiligung
-          </div>
-          <div class="filter-pill" data-filter="sb" data-value="mit" onclick="setFilter('sb','mit',this)">
-            <span class="pill-icon">💰</span> Mit Selbstbeteiligung
-          </div>
+      <!-- Result after selection -->
+      <div id="guided-result" style="display:none">
+        <button class="guided-back" onclick="resetGuided()">← Andere Auswahl</button>
+        <div class="guided-result-wrap">
+          <span class="guided-result-label" id="guided-result-label">Tarife für dich gefunden</span>
         </div>
+        <div id="compare-container-a"></div>
       </div>
     </div>
   </div>
 
-  <div id="compare-container"></div>
-  <div class="no-results" id="no-results">😕 Keine Tarife für diese Kombination – wähle andere Filter!</div>
+  <!-- VARIANT B: Empfehlung Banner + full table always visible -->
+  <div id="variant-b" style="display:none">
+    <div class="rec-banner" id="rec-banner" style="display:none">
+      <div class="rec-banner-text">
+        <div class="rec-banner-label">⭐ Unsere persönliche Empfehlung</div>
+        <div class="rec-banner-title" id="rec-banner-name">…</div>
+        <div class="rec-banner-sub" id="rec-banner-sub">…</div>
+      </div>
+      <a class="rec-banner-btn" id="rec-banner-btn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Jetzt wählen
+      </a>
+    </div>
+    <div id="compare-container-b"></div>
+  </div>
+
+  <!-- VARIANT C: Sticky Recommendation + table -->
+  <div id="variant-c" style="display:none">
+    <div class="sticky-rec" id="sticky-rec" style="display:none">
+      <div class="sticky-rec-text">
+        ⭐ Unsere Empfehlung für <span id="sticky-hn">…</span>:
+        <span class="sticky-rec-name" id="sticky-rec-name">…</span>
+        <span id="sticky-rec-price" style="color:rgba(255,255,255,.6);font-size:12px"></span>
+      </div>
+      <a class="sticky-rec-btn" id="sticky-rec-btn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Direkt wählen
+      </a>
+    </div>
+    <div id="compare-container-c"></div>
+  </div>
+
+  <div class="no-results" id="no-results" style="display:none">😕 Keine Tarife gefunden.</div>
 </section>
 
-<!-- WHY -->
 <section class="why">
   <div class="why-in">
     <div class="section-label">Warum Pfoten-Allianz</div>
@@ -374,33 +340,19 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   </div>
 </section>
 
-<!-- REVIEWS -->
 <section class="reviews">
   <div class="reviews-in">
     <div class="section-label">Kundenstimmen</div>
     <h2 class="section-title">Was andere sagen</h2>
     <p class="section-sub" style="margin-bottom:36px">Über 500 Tierbesitzer vertrauen uns bereits</p>
     <div class="reviews-grid">
-      <div class="review-card">
-        <div class="rc-stars">★★★★★</div>
-        <div class="rc-text">„Super schnell und super nett! Ich hatte innerhalb von einem Tag mein perfektes Angebot – ohne Stress und ohne Druck."</div>
-        <div class="rc-author"><div class="rc-avatar">S</div><div><div class="rc-name">Sabrina M.</div><div class="rc-date">vor 3 Tagen · Google</div></div></div>
-      </div>
-      <div class="review-card">
-        <div class="rc-stars">★★★★★</div>
-        <div class="rc-text">„Endlich mal jemand der sich wirklich auskennt. Kein Vergleichsportal-Stress, sondern echte persönliche Beratung. Sehr empfehlenswert!"</div>
-        <div class="rc-author"><div class="rc-avatar">T</div><div><div class="rc-name">Thomas K.</div><div class="rc-date">vor 1 Woche · Google</div></div></div>
-      </div>
-      <div class="review-card">
-        <div class="rc-stars">★★★★★</div>
-        <div class="rc-text">„Haben meinen Hund perfekt versichert – genau der richtige Tarif für seine Rasse. Immer erreichbar wenn man Fragen hat."</div>
-        <div class="rc-author"><div class="rc-avatar">L</div><div><div class="rc-name">Laura B.</div><div class="rc-date">vor 2 Wochen · Google</div></div></div>
-      </div>
+      <div class="review-card"><div class="rc-stars">★★★★★</div><div class="rc-text">„Super schnell und super nett! Ich hatte innerhalb von einem Tag mein perfektes Angebot – ohne Stress und ohne Druck."</div><div class="rc-author"><div class="rc-avatar">S</div><div><div class="rc-name">Sabrina M.</div><div class="rc-date">vor 3 Tagen · Google</div></div></div></div>
+      <div class="review-card"><div class="rc-stars">★★★★★</div><div class="rc-text">„Endlich mal jemand der sich wirklich auskennt. Kein Vergleichsportal-Stress, sondern echte persönliche Beratung."</div><div class="rc-author"><div class="rc-avatar">T</div><div><div class="rc-name">Thomas K.</div><div class="rc-date">vor 1 Woche · Google</div></div></div></div>
+      <div class="review-card"><div class="rc-stars">★★★★★</div><div class="rc-text">„Haben meinen Hund perfekt versichert – genau der richtige Tarif für seine Rasse. Immer erreichbar wenn man Fragen hat."</div><div class="rc-author"><div class="rc-avatar">L</div><div><div class="rc-name">Laura B.</div><div class="rc-date">vor 2 Wochen · Google</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="final-cta">
   <div class="fc-in">
     <div class="fc-title">Bereit? Lass uns jetzt starten!</div>
@@ -417,38 +369,25 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   <div class="footer-logo">Pfoten<span>-Allianz</span></div>
   <div class="footer-text">© 2026 Pfoten-Allianz · Alle Rechte vorbehalten</div>
 </footer>
+</div>
 
-</div><!-- #main -->
-
-<!-- WhatsApp float -->
 <a class="wa-float" id="wa-float-btn" href="#" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <div class="wa-dot"></div>
 </a>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// CONFIGURATION — NUR HIER ANPASSEN!
-// ═══════════════════════════════════════════════════════
 const CONFIG = {
-  // Google Sheets: Datei → Freigeben → "Jeder mit dem Link" → Betrachter
-  // Dann: Datei → Im Web veröffentlichen → CSV → URL kopieren
   SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHVrS4dYac9GxMV0qVCx6_b6ieRkh-q7qnQWNlPrAhNCYgz1pkrdLeS4WSVVqsmuiLcKnOm-2LFOh_/pub?output=csv',
   WA_NUMBER: '491755901293',
 };
 
-// ═══════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════
+const WA_SVG = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
 function pad(n){return String(n).padStart(2,'0')}
-
-function waLink(text){
-  return `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(text)}`;
-}
-
+function waLink(text){return `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(text)}`;}
 function formatPrice(val){
   if(!val) return null;
-  // Accept "24.90", "24,90", "24.90€" etc.
   const num = parseFloat(String(val).replace(',','.').replace(/[^0-9.]/g,''));
   if(isNaN(num)) return null;
   const euros = Math.floor(num);
@@ -459,263 +398,205 @@ function formatPrice(val){
 function startCountdown(targetDate){
   const wrap = document.getElementById('countdown-wrap');
   const expNote = document.getElementById('expired-note');
-
   function tick(){
-    const now = new Date();
-    const diff = targetDate - now;
-    if(diff <= 0){
-      wrap.style.display = 'none';
-      expNote.style.display = 'block';
-      return;
-    }
-    wrap.style.display = 'inline-flex';
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = pad(days);
-    document.getElementById('cd-hours').textContent = pad(hours);
-    document.getElementById('cd-mins').textContent = pad(mins);
-    document.getElementById('cd-secs').textContent = pad(secs);
+    const diff = targetDate - new Date();
+    if(diff <= 0){ wrap.style.display='none'; expNote.style.display='block'; return; }
+    wrap.style.display='inline-flex';
+    document.getElementById('cd-days').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-mins').textContent = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-secs').textContent = pad(Math.floor((diff%60000)/1000));
   }
-  tick();
-  setInterval(tick, 1000);
+  tick(); setInterval(tick,1000);
 }
 
-function buildTariffCard(data, index, isRecommended){
-  const waText = `Hallo! Ich möchte den Tarif "${data.name}" für ${data.hundename||'meinen Hund'} abschließen. Angebots-ID: ${data.id}`;
-  const price = formatPrice(data.preis);
-
-  let featuresHTML = '';
-  for(let i=1; i<=6; i++){
-    const f = data[`feature${i}`];
-    if(f && f.trim()) featuresHTML += `<div class="tf"><div class="tf-dot">✓</div><div>${f.trim()}</div></div>`;
-  }
-
-  let detailsHTML = '';
-  if(data.selbstbeteiligung) detailsHTML += `<div class="dr"><span class="dr-label">Selbstbeteiligung</span><span class="dr-val">${data.selbstbeteiligung}</span></div>`;
-  if(data.wartezeit) detailsHTML += `<div class="dr"><span class="dr-label">Wartezeit</span><span class="dr-val">${data.wartezeit}</span></div>`;
-  if(data.auszahlung) detailsHTML += `<div class="dr"><span class="dr-label">Max. Auszahlung/Jahr</span><span class="dr-val">${data.auszahlung}</span></div>`;
-
-  const animDelay = index * 0.1;
-
-  return `
-    <div class="tariff-card${isRecommended?' recommended':''}" style="animation-delay:${animDelay}s" data-art="${data.typ||''}" data-sb="${data.selbstbeteiligung||'0'}">
-      ${isRecommended ? '<div class="rec-badge">⭐ Empfehlung</div>' : ''}
-      <div class="tariff-header">
-        <div class="tariff-type">${data.typ || 'Krankenversicherung'}</div>
-        <div class="tariff-name">${data.name || `Option ${index+1}`}</div>
-        ${price ? `
-        <div class="tariff-price-wrap">
-          <span class="tariff-price">${price.euros}</span>
-          <span class="tariff-price-cents">,${price.cents}€</span>
-          <span class="tariff-price-per">/ Monat</span>
-        </div>` : ''}
-      </div>
-      <div class="tariff-body">
-        ${featuresHTML ? `<div class="tariff-features">${featuresHTML}</div>` : ''}
-        ${detailsHTML ? `<div class="detail-rows">${detailsHTML}</div>` : ''}
-        <div style="margin-top:20px">
-          <a class="tariff-cta ${isRecommended?'primary':'secondary'}" href="${waLink(waText)}" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            ${isRecommended ? 'Diesen Tarif wählen' : 'Tarif anfragen'}
-          </a>
-        </div>
-      </div>
-    </div>`;
-}
-
-// ═══════════════════════════════════════════════════════
-// PARSE CSV
-// ═══════════════════════════════════════════════════════
 function parseCSV(text){
   const lines = text.trim().split('\n');
-  const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g,''));
-  return lines.slice(1).map(line => {
-    const vals = line.split(',').map(v => v.trim().replace(/^"|"$/g,''));
-    const obj = {};
-    headers.forEach((h,i) => obj[h] = vals[i] || '');
+  const headers = lines[0].split(',').map(h=>h.trim().toLowerCase().replace(/"/g,''));
+  return lines.slice(1).map(line=>{
+    const vals = line.split(',').map(v=>v.trim().replace(/^"|"$/g,''));
+    const obj={};
+    headers.forEach((h,i)=>obj[h]=vals[i]||'');
     return obj;
   });
 }
 
-// ═══════════════════════════════════════════════════════
-// MAIN — LOAD DATA
-// ═══════════════════════════════════════════════════════
-async function init(){
-  // Get ID from URL
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
+// ── BUILD COMPARE TABLE HTML (shared by all variants) ──
+function buildTable(tariffs, hundename){
+  const rows = [
+    {label:'Preis (€ pro Monat)', key:'preis', type:'price'},
+    {label:'Selbstbeteiligung', key:'selbstbeteiligung', type:'val'},
+    {label:'GOT Abrechnungssatz', key:'got', type:'val'},
+    {label:'Ambulante Behandlungen / Jahr', key:'ambulant', type:'val'},
+    {label:'Operationen / Jahr', key:'operationen', type:'val'},
+    {label:'Kündigungsschutz', key:'kuendigungsschutz', type:'check'},
+    {label:'Vorsorgepauschale', key:'vorsorge', type:'val'},
+    {label:'Röntgen, MRT, CT, Ultraschall', key:'roentgen', type:'check'},
+    {label:'Physiotherapie nach OP', key:'physio', type:'check'},
+    {label:'Allgemeine Wartezeit', key:'wartezeit', type:'val'},
+    {label:'Wartezeit ED, HD, Patella etc.', key:'wartezeit_speziell', type:'val'},
+    {label:'Zahnbehandlung', key:'zahn', type:'check'},
+  ];
+  const waBase = `https://wa.me/${CONFIG.WA_NUMBER}`;
 
-  if(!id){
-    showError();
+  let headerCols = `<th>Leistung</th>`;
+  tariffs.forEach(t=>{
+    const p = formatPrice(t.preis);
+    headerCols += `<th class="${t.empfehlung?'recommended':''}">
+      ${t.empfehlung?'<div class="ct-rec-badge">⭐ Empfehlung</div>':''}
+      <span class="ct-tarif-name">${t.name}</span>
+      <span class="ct-tarif-typ">${t.typ}</span>
+      ${p?`<span class="ct-tarif-price">${p.euros}<span style="font-size:18px">,${p.cents}€</span></span><span class="ct-tarif-price-sub">pro Monat</span>`:''}
+    </th>`;
+  });
+
+  let bodyRows = '';
+  rows.forEach(row=>{
+    let cols = `<td>${row.label}</td>`;
+    tariffs.forEach(t=>{
+      const val = t[row.key]||'';
+      let cell='';
+      if(row.type==='price'){
+        const p=formatPrice(t.preis);
+        cell=p?`<span class="ct-val highlight">${p.euros},${p.cents}€`:'–';
+      } else if(row.type==='check'){
+        const ok = val && val!=='–' && val.toLowerCase()!=='nein';
+        cell = ok?`<span class="ct-check">✓</span>`:`<span class="ct-cross">–</span>`;
+      } else {
+        cell = val && val!=='–'?`<span class="ct-val">${val}</span>`:`<span class="ct-cross">–</span>`;
+      }
+      cols += `<td class="${t.empfehlung?'recommended':''}">${cell}</td>`;
+    });
+    bodyRows += `<tr class="ct-row">${cols}</tr>`;
+  });
+
+  let ctaCols = `<td></td>`;
+  tariffs.forEach(t=>{
+    const wt = encodeURIComponent(`Hallo! Ich möchte den Tarif "${t.name}" für ${hundename} abschließen. Angebots-ID: ${t.id}`);
+    ctaCols += `<td class="${t.empfehlung?'recommended':''}">
+      <a class="ct-btn ${t.empfehlung?'primary':'secondary'}" href="${waBase}?text=${wt}" target="_blank" rel="noopener">
+        ${WA_SVG} ${t.empfehlung?'Diesen Tarif wählen':'Tarif anfragen'}
+      </a></td>`;
+  });
+
+  return `<div class="compare-wrap"><table class="compare-table">
+    <thead><tr class="ct-head">${headerCols}</tr></thead>
+    <tbody>${bodyRows}<tr class="ct-cta-row">${ctaCols}</tr></tbody>
+  </table></div>`;
+}
+
+// ── GLOBAL STATE ──
+let allTariffs = [];
+let currentHundename = '';
+let currentVariant = 'b'; // default
+
+// ── VARIANT A: GUIDED ──
+function renderVariantA(){
+  document.getElementById('variant-a').style.display = 'block';
+
+  // Build choice buttons from unique types in allTariffs
+  const types = [...new Set(allTariffs.map(t => t.typ))];
+  const typeIcons = {'OP-Versicherung':'🔬','Krankenversicherung':'🏥'};
+  const typeDescs = {
+    'OP-Versicherung':'Fokus auf Operationen – günstigerer Monatsbeitrag, maximale Absicherung bei OP-Kosten.',
+    'Krankenversicherung':'Rundum-Schutz – alle Behandlungen, auch ambulant, ohne OP-Limit.'
+  };
+
+  // If only 1 type, skip step 1 and show all directly
+  if(types.length === 1){
+    document.getElementById('guided-step1').style.display = 'none';
+    showGuidedResult(allTariffs, `Alle ${types[0]}-Tarife für ${currentHundename}`);
     return;
   }
 
-  try {
-    // Fetch with multiple proxy fallbacks
-    const proxies = [
-      u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-      u => `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
-    ];
-    let text = null;
-    for(const proxy of proxies){
-      try {
-        const r = await fetch(proxy(CONFIG.SHEET_URL));
-        if(!r.ok) continue;
-        const t = await r.text();
-        if(t && t.length > 10 && t.includes(',') && !t.startsWith('{')){ text = t; break; }
-      } catch(e){ continue; }
-    }
-    if(!text) throw new Error('All proxies failed');
-    const rows = parseCSV(text);
+  const choicesEl = document.getElementById('guided-choices');
+  choicesEl.innerHTML = types.map(typ => {
+    const tariffsOfType = allTariffs.filter(t => t.typ === typ);
+    const prices = tariffsOfType.map(t => formatPrice(t.preis)).filter(Boolean);
+    const minPrice = prices.length ? Math.min(...prices.map(p => p.euros + p.cents/100)) : null;
+    return `<div class="guided-choice" onclick="selectGuidedType('${typ}')">
+      <span class="gc-icon">${typeIcons[typ]||'📋'}</span>
+      <div class="gc-title">${typ}</div>
+      <div class="gc-sub">${typeDescs[typ]||''}</div>
+      ${minPrice?`<div class="gc-price">Ab ${minPrice.toFixed(2).replace('.',',')} € / Monat</div>`:''}
+    </div>`;
+  }).join('');
 
-    // Find matching row
-    const row = rows.find(r => r.id && r.id.trim() === id.trim());
-    if(!row){
-      showError();
-      return;
-    }
-
-    renderPage(row, rows.filter(r => r.id && r.id.trim() === id.trim()));
-
-  } catch(e) {
-    console.error(e);
-    // DEMO MODE — show with demo data if sheet not configured
-    if(CONFIG.SHEET_URL === 'YOUR_GOOGLE_SHEET_CSV_URL_HERE'){
-      renderPage(DEMO_DATA[0], DEMO_DATA);
-    } else {
-      showError();
-    }
-  }
+  document.querySelectorAll('.hn-guided').forEach(el => el.textContent = currentHundename);
 }
 
-// ═══════════════════════════════════════════════════════
-// DEMO DATA (shown when no Sheet URL is configured)
-// ═══════════════════════════════════════════════════════
-const DEMO_DATA = [
-  {
-    id: 'demo',
-    vorname: 'Maria',
-    hundename: 'Bello',
-    rasse: 'Labrador Retriever',
-    geburtsdatum: '12.03.2021',
-    gueltig_bis: (() => { const d = new Date(); d.setDate(d.getDate()+14); return d.toLocaleDateString('de-DE'); })(),
-    // Tarif 1 — Empfehlung
-    name: 'OP-Schutz Plus',
-    typ: 'OP-Versicherung',
-    preis: '24.90',
-    feature1: 'Alle Operationen inkl. Vor- & Nachbehandlung',
-    feature2: 'Unbegrenzte Auszahlung pro Jahr',
-    feature3: 'Keine Wartezeit bei Unfällen',
-    feature4: 'GOT-Abrechnungssatz 4-fach',
-    selbstbeteiligung: '0 €',
-    wartezeit: '1 Monat allgemein',
-    auszahlung: 'Unbegrenzt',
+function selectGuidedType(typ){
+  const filtered = allTariffs.filter(t => t.typ === typ);
+  document.getElementById('guided-step1').style.display = 'none';
+  showGuidedResult(filtered, `${typ}-Tarife für ${currentHundename}`);
+}
+
+function showGuidedResult(tariffs, labelText){
+  document.getElementById('guided-result-label').textContent = `✅ ${labelText}`;
+  document.getElementById('compare-container-a').innerHTML = buildTable(tariffs, currentHundename);
+  document.getElementById('guided-result').style.display = 'block';
+}
+
+function resetGuided(){
+  document.getElementById('guided-result').style.display = 'none';
+  document.getElementById('guided-step1').style.display = 'block';
+}
+
+// ── VARIANT B: BANNER + FULL TABLE ──
+function renderVariantB(){
+  document.getElementById('variant-b').style.display = 'block';
+
+  // Show recommendation banner if any tariff has empfehlung=ja
+  const rec = allTariffs.find(t => t.empfehlung);
+  if(rec){
+    const p = formatPrice(rec.preis);
+    document.getElementById('rec-banner').style.display = 'flex';
+    document.getElementById('rec-banner-name').textContent = `${rec.name} – ${p ? p.euros+','+p.cents+'€ / Monat' : ''}`;
+    document.getElementById('rec-banner-sub').textContent = `Unser Top-Pick für ${currentHundename}: ${rec.typ}. Ideal für Rasse & Alter.`;
+    const waText = `Hallo! Ich möchte den Tarif "${rec.name}" für ${currentHundename} abschließen. Angebots-ID: ${rec.id}`;
+    document.getElementById('rec-banner-btn').href = waLink(waText);
   }
-];
 
-// For multi-tariff: each row with same ID but different tariff columns
-// OR: use tariff1_name, tariff1_preis, tariff2_name, tariff2_preis etc. in ONE row
-const DEMO_ROW = {
-  id: 'demo',
-  vorname: 'Maria',
-  hundename: 'Bello',
-  rasse: 'Labrador Retriever',
-  geburtsdatum: '12.03.2021',
-  gueltig_bis: (() => { const d = new Date(); d.setDate(d.getDate()+14); return d.toLocaleDateString('de-DE'); })(),
-  tarif1_name: 'OP-Schutz Basis',
-  tarif1_typ: 'OP-Versicherung',
-  tarif1_preis: '19.90',
-  tarif1_feature1: 'Alle Operationen abgedeckt',
-  tarif1_feature2: 'Bis 3.000 € Auszahlung/Jahr',
-  tarif1_feature3: 'GOT-Abrechnungssatz 2-fach',
-  tarif1_selbstbeteiligung: '0 €',
-  tarif1_wartezeit: '1 Monat',
-  tarif1_empfehlung: '',
-  tarif2_name: 'OP-Schutz Plus',
-  tarif2_typ: 'OP-Versicherung',
-  tarif2_preis: '24.90',
-  tarif2_feature1: 'Alle Operationen inkl. Vor- & Nachbehandlung',
-  tarif2_feature2: 'Unbegrenzte Auszahlung pro Jahr',
-  tarif2_feature3: 'Keine Wartezeit bei Unfällen',
-  tarif2_feature4: 'GOT-Abrechnungssatz 4-fach',
-  tarif2_selbstbeteiligung: '0 €',
-  tarif2_wartezeit: '1 Monat allgemein',
-  tarif2_empfehlung: 'ja',
-  tarif3_name: 'Kranken-Vollschutz',
-  tarif3_typ: 'Krankenversicherung',
-  tarif3_preis: '42.90',
-  tarif3_feature1: 'Alle Behandlungen ohne OP-Limit',
-  tarif3_feature2: 'Vorsorgeuntersuchungen inklusive',
-  tarif3_feature3: 'Zahnbehandlungen abgedeckt',
-  tarif3_feature4: 'Medikamente & Physiotherapie',
-  tarif3_feature5: 'Weltweiter Versicherungsschutz',
-  tarif1_got: '2-fach',
-  tarif1_ambulant: '–',
-  tarif1_operationen: '3.000 € / Jahr',
-  tarif1_kuendigungsschutz: 'ja',
-  tarif1_vorsorge: '–',
-  tarif1_roentgen: 'ja',
-  tarif1_physio: 'ja',
-  tarif1_wartezeit_speziell: '3 Monate',
-  tarif1_zahn: '',
-  tarif2_got: '4-fach',
-  tarif2_ambulant: '–',
-  tarif2_operationen: 'Unbegrenzt',
-  tarif2_kuendigungsschutz: 'ja',
-  tarif2_vorsorge: '–',
-  tarif2_roentgen: 'ja',
-  tarif2_physio: 'ja',
-  tarif2_wartezeit_speziell: '3 Monate',
-  tarif2_zahn: '',
-  tarif3_selbstbeteiligung: '250 € / Jahr',
-  tarif3_wartezeit: '1 Monat',
-  tarif3_empfehlung: '',
-  tarif3_got: '4-fach',
-  tarif3_ambulant: '1.500 € / Jahr',
-  tarif3_operationen: 'Unbegrenzt',
-  tarif3_kuendigungsschutz: 'ja',
-  tarif3_vorsorge: '100 € / Jahr',
-  tarif3_roentgen: 'ja',
-  tarif3_physio: 'ja',
-  tarif3_wartezeit_speziell: '3 Monate',
-  tarif3_zahn: 'ja',
-};
+  document.getElementById('compare-container-b').innerHTML = buildTable(allTariffs, currentHundename);
+}
 
-// ═══════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════
+// ── VARIANT C: STICKY + TABLE ──
+function renderVariantC(){
+  document.getElementById('variant-c').style.display = 'block';
+
+  const rec = allTariffs.find(t => t.empfehlung);
+  if(rec){
+    const p = formatPrice(rec.preis);
+    document.getElementById('sticky-rec').style.display = 'flex';
+    document.getElementById('sticky-hn').textContent = currentHundename;
+    document.getElementById('sticky-rec-name').textContent = rec.name;
+    document.getElementById('sticky-rec-price').textContent = p ? `· ${p.euros},${p.cents}€/Monat` : '';
+    const waText = `Hallo! Ich möchte den Tarif "${rec.name}" für ${currentHundename} abschließen. Angebots-ID: ${rec.id}`;
+    document.getElementById('sticky-rec-btn').href = waLink(waText);
+  }
+
+  document.getElementById('compare-container-c').innerHTML = buildTable(allTariffs, currentHundename);
+}
+
+// ── RENDER PAGE ──
 function renderPage(row, allRows){
-  // Use single-row multi-tariff format (tarif1_*, tarif2_*, tarif3_*)
   const data = allRows.length > 0 ? allRows[0] : row;
-  // Support both single-row (tarif1_name...) and demo row
-  const isDemo = data.id === 'demo' && !data.tarif1_name;
 
-  const vorname = (isDemo ? 'Maria' : (data.vorname || ''));
-  const hundename = (isDemo ? 'Bello' : (data.hundename || ''));
-  const rasse = isDemo ? 'Labrador Retriever' : (data.rasse || '');
-  const geburtsdatum = isDemo ? '12.03.2021' : (data.geburtsdatum || '');
-  const gueltigBis = isDemo ? DEMO_ROW.gueltig_bis : (data.gueltig_bis || '');
+  const vorname = data.vorname || '';
+  const hundename = data.hundename || '';
+  const rasse = data.rasse || '';
+  const geburtsdatum = data.geburtsdatum || '';
+  const gueltigBis = data.gueltig_bis || '';
 
-  // Fill in personal info
   document.getElementById('vorname').textContent = vorname;
   document.getElementById('hundename-title').textContent = hundename;
   document.getElementById('hundename-sub').textContent = hundename;
   document.getElementById('dog-name-card').textContent = hundename;
   document.getElementById('hundename-tariff').textContent = hundename;
 
-  if(rasse){
-    document.getElementById('dog-rasse').textContent = rasse;
-    document.getElementById('dog-rasse-wrap').style.display = 'flex';
-  }
-  if(geburtsdatum){
-    document.getElementById('dog-geb').textContent = geburtsdatum;
-    document.getElementById('dog-geb-wrap').style.display = 'flex';
-  }
+  if(rasse){ document.getElementById('dog-rasse').textContent=rasse; document.getElementById('dog-rasse-wrap').style.display='flex'; }
+  if(geburtsdatum){ document.getElementById('dog-geb').textContent=geburtsdatum; document.getElementById('dog-geb-wrap').style.display='flex'; }
 
-  // WhatsApp links
   const waText = `Hallo! Ich habe mein persönliches Angebot für ${hundename} erhalten und möchte mehr erfahren.`;
   const waUrl = waLink(waText);
   document.getElementById('nav-wa-btn').href = waUrl;
@@ -723,56 +604,48 @@ function renderPage(row, allRows){
   document.getElementById('fc-wa-btn').href = waUrl;
   document.getElementById('fc-sub-text').textContent = `Schreib uns auf WhatsApp – wir kümmern uns persönlich um ${hundename}!`;
 
-  // Countdown
   if(gueltigBis){
     const parts = gueltigBis.split('.').map(Number);
-    const targetDate = parts.length === 3 ? new Date(parts[2], parts[1]-1, parts[0], 23, 59, 59) : null;
-    if(targetDate) startCountdown(targetDate);
+    if(parts.length===3) startCountdown(new Date(parts[2],parts[1]-1,parts[0],23,59,59));
   }
 
-  // Build tariff data with extended fields for comparison table
-  const tariffData = isDemo ? DEMO_ROW : data;
+  // Build tariffs array
   allTariffs = [];
   currentHundename = hundename;
-
   for(let i=1; i<=5; i++){
-    const name = tariffData[`tarif${i}_name`];
-    if(!name || !name.trim()) break;
+    const name = data[`tarif${i}_name`];
+    if(!name||!name.trim()) break;
     allTariffs.push({
-      id: tariffData.id,
-      hundename,
-      name: tariffData[`tarif${i}_name`],
-      typ: tariffData[`tarif${i}_typ`] || 'Versicherung',
-      preis: tariffData[`tarif${i}_preis`],
-      selbstbeteiligung: tariffData[`tarif${i}_selbstbeteiligung`] || '',
-      wartezeit: tariffData[`tarif${i}_wartezeit`] || '',
-      wartezeit_speziell: tariffData[`tarif${i}_wartezeit_speziell`] || '',
-      auszahlung: tariffData[`tarif${i}_auszahlung`] || '',
-      got: tariffData[`tarif${i}_got`] || '',
-      ambulant: tariffData[`tarif${i}_ambulant`] || '',
-      operationen: tariffData[`tarif${i}_operationen`] || '',
-      kuendigungsschutz: tariffData[`tarif${i}_kuendigungsschutz`] || '',
-      vorsorge: tariffData[`tarif${i}_vorsorge`] || '',
-      roentgen: tariffData[`tarif${i}_roentgen`] || '',
-      physio: tariffData[`tarif${i}_physio`] || '',
-      zahn: tariffData[`tarif${i}_zahn`] || '',
-      empfehlung: (tariffData[`tarif${i}_empfehlung`] || '').toLowerCase() === 'ja',
+      id: data.id, hundename,
+      name: data[`tarif${i}_name`],
+      typ: data[`tarif${i}_typ`]||'Versicherung',
+      preis: data[`tarif${i}_preis`]||'',
+      selbstbeteiligung: data[`tarif${i}_selbstbeteiligung`]||'',
+      wartezeit: data[`tarif${i}_wartezeit`]||'',
+      wartezeit_speziell: data[`tarif${i}_wartezeit_speziell`]||'',
+      auszahlung: data[`tarif${i}_auszahlung`]||'',
+      got: data[`tarif${i}_got`]||'',
+      ambulant: data[`tarif${i}_ambulant`]||'',
+      operationen: data[`tarif${i}_operationen`]||'',
+      kuendigungsschutz: data[`tarif${i}_kuendigungsschutz`]||'',
+      vorsorge: data[`tarif${i}_vorsorge`]||'',
+      roentgen: data[`tarif${i}_roentgen`]||'',
+      physio: data[`tarif${i}_physio`]||'',
+      zahn: data[`tarif${i}_zahn`]||'',
+      empfehlung: (data[`tarif${i}_empfehlung`]||'').toLowerCase()==='ja',
     });
   }
 
-  // Show filter + table
-  if(allTariffs.length > 0) {
-    document.getElementById('filter-bar').style.display = 'block';
-    // Always reset filters to "alle" on load
-    activeFilters.art = 'alle';
-    activeFilters.sb = 'alle';
-    document.querySelectorAll('[data-filter]').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('[data-value="alle"]').forEach(p => p.classList.add('active'));
-    applyFilters();
-    renderCompareTable();
+  if(allTariffs.length > 0){
+    // Determine variant from URL: ?variant=a / b / c (default = b)
+    const params = new URLSearchParams(window.location.search);
+    currentVariant = (params.get('variant')||'b').toLowerCase();
+
+    if(currentVariant==='a') renderVariantA();
+    else if(currentVariant==='c') renderVariantC();
+    else renderVariantB(); // default = B
   }
 
-  // Show page
   document.getElementById('loading').classList.add('hidden');
   document.getElementById('main').style.display = 'block';
 }
@@ -782,158 +655,40 @@ function showError(){
   document.getElementById('error').style.display = 'flex';
 }
 
+// ── FETCH + INIT ──
+async function init(){
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if(!id){ showError(); return; }
 
-// ═══════════════════════════════════════════════════════
-// FILTER + COMPARISON TABLE LOGIC
-// ═══════════════════════════════════════════════════════
-const activeFilters = { art: 'alle', sb: 'alle' };
-let allTariffs = [];
-let currentHundename = '';
+  try {
+    const proxies = [
+      u=>`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+      u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+      u=>`https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
+    ];
+    let text = null;
+    for(const proxy of proxies){
+      try {
+        const r = await fetch(proxy(CONFIG.SHEET_URL));
+        if(!r.ok) continue;
+        const t = await r.text();
+        if(t&&t.length>10&&t.includes(',')&&!t.startsWith('{')){ text=t; break; }
+      } catch(e){ continue; }
+    }
+    if(!text) throw new Error('All proxies failed');
 
-function applyFilters() {
-  const cards = document.querySelectorAll('.tariff-card');
-  let visible = 0;
-  cards.forEach(card => {
-    const art = (card.dataset.art || '').toLowerCase();
-    const sb = (card.dataset.sb || '').toLowerCase();
-    const sbNum = parseFloat(sb.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
-    const showArt = activeFilters.art === 'alle' ||
-      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
-      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
-    const showSB = activeFilters.sb === 'alle' ||
-      (activeFilters.sb === 'ohne' && sbNum === 0) ||
-      (activeFilters.sb === 'mit' && sbNum > 0);
-    if(showArt && showSB){ card.classList.remove('hidden'); visible++; }
-    else { card.classList.add('hidden'); }
-  });
-  const hint = document.getElementById('filter-hint');
-  const noResults = document.getElementById('no-results');
-  if(visible === 0){ noResults.classList.add('visible'); if(hint) hint.textContent=''; }
-  else { noResults.classList.remove('visible'); if(hint) hint.textContent = visible === cards.length ? '' : `${visible} Tarif${visible!==1?'e':''} gefunden`; }
-  const grid = document.getElementById('tariffs-grid');
-  if(grid) {
-    const vis = [...cards].filter(c=>!c.classList.contains('hidden'));
-    if(vis.length===1) grid.className='tariffs-grid';
-    else if(vis.length===2) grid.className='tariffs-grid two';
-    else grid.className='tariffs-grid three';
+    const rows = parseCSV(text);
+    const row = rows.find(r=>r.id&&r.id.trim()===id.trim());
+    if(!row){ showError(); return; }
+
+    renderPage(row, rows.filter(r=>r.id&&r.id.trim()===id.trim()));
+  } catch(e){
+    console.error(e);
+    showError();
   }
 }
 
-function setFilter(group, value, el) {
-  activeFilters[group] = value;
-  document.querySelectorAll(`[data-filter="${group}"]`).forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  renderCompareTable();
-}
-
-function renderCompareTable() {
-  const container = document.getElementById('compare-container');
-  const noResults = document.getElementById('no-results');
-
-  // Filter tariffs
-  const filtered = allTariffs.filter(t => {
-    const art = (t.typ || '').toLowerCase();
-    const sb = (t.selbstbeteiligung || '').replace(/[^0-9.,]/g,'').replace(',','.');
-    const sbNum = parseFloat(sb) || 0;
-
-    const matchArt = activeFilters.art === 'alle' ||
-      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
-      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
-
-    const matchSB = activeFilters.sb === 'alle' ||
-      (activeFilters.sb === 'ohne' && sbNum === 0) ||
-      (activeFilters.sb === 'mit' && sbNum > 0);
-
-    return matchArt && matchSB;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    noResults.classList.add('visible');
-    return;
-  }
-  noResults.classList.remove('visible');
-
-  // Define table rows to show (label, key or special)
-  const rows = [
-    { label: 'Preis (€ pro Monat)', key: 'preis', type: 'price' },
-    { label: 'Selbstbeteiligung', key: 'selbstbeteiligung', type: 'val' },
-    { label: 'GOT Abrechnungssatz', key: 'got', type: 'val' },
-    { label: 'Ambulante Behandlungen pro Jahr', key: 'ambulant', type: 'val' },
-    { label: 'Operationen pro Jahr', key: 'operationen', type: 'val' },
-    { label: 'Kündigungsschutz', key: 'kuendigungsschutz', type: 'check' },
-    { label: 'Vorsorgepauschale', key: 'vorsorge', type: 'val' },
-    { label: 'Röntgen, MRT, CT, Ultraschall', key: 'roentgen', type: 'check' },
-    { label: 'Physiotherapie nach OP', key: 'physio', type: 'check' },
-    { label: 'Allgemeine Wartezeit', key: 'wartezeit', type: 'val' },
-    { label: 'Wartezeit bei ED, HD, Patella etc.', key: 'wartezeit_speziell', type: 'val' },
-    { label: 'Zahnbehandlung', key: 'zahn', type: 'check' },
-  ];
-
-  const waBase = `https://wa.me/${CONFIG.WA_NUMBER}`;
-
-  // Build header
-  let headerCols = `<th>Leistung</th>`;
-  filtered.forEach((t, i) => {
-    const isRec = t.empfehlung;
-    const price = formatPrice(t.preis);
-    headerCols += `<th class="${isRec ? 'recommended' : ''}">
-      ${isRec ? '<div class="ct-rec-badge">⭐ Empfehlung</div>' : ''}
-      <span class="ct-tarif-name">${t.name}</span>
-      <span class="ct-tarif-typ">${t.typ}</span>
-      ${price ? `<span class="ct-tarif-price">${price.euros}<span style="font-size:18px">,${price.cents}€</span></span><span class="ct-tarif-price-sub">pro Monat</span>` : ''}
-    </th>`;
-  });
-
-  // Build body rows
-  let bodyRows = '';
-  rows.forEach(row => {
-    let cols = `<td>${row.label}</td>`;
-    filtered.forEach(t => {
-      const isRec = t.empfehlung;
-      const val = t[row.key] || '';
-      let cell = '';
-      if (row.type === 'price') {
-        const p = formatPrice(t.preis);
-        cell = p ? `<span class="ct-val highlight">${p.euros},${p.cents}€</span>` : '–';
-      } else if (row.type === 'check') {
-        cell = val && val !== '–' && val !== 'nein' && val !== 'Nein'
-          ? `<span class="ct-check">✓</span>`
-          : `<span class="ct-cross">–</span>`;
-      } else {
-        cell = val ? `<span class="ct-val">${val}</span>` : `<span class="ct-cross">–</span>`;
-      }
-      cols += `<td class="${isRec ? 'recommended' : ''}">${cell}</td>`;
-    });
-    bodyRows += `<tr class="ct-row">${cols}</tr>`;
-  });
-
-  // Build CTA row
-  let ctaCols = `<td></td>`;
-  filtered.forEach(t => {
-    const isRec = t.empfehlung;
-    const waText = encodeURIComponent(`Hallo! Ich möchte den Tarif "${t.name}" für ${currentHundename} abschließen. Angebots-ID: ${t.id}`);
-    ctaCols += `<td class="${isRec ? 'recommended' : ''}">
-      <a class="ct-btn ${isRec ? 'primary' : 'secondary'}" href="${waBase}?text=${waText}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.853L.057 23.926l6.224-1.431C7.913 23.461 9.916 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.88 0-3.647-.5-5.173-1.376l-.371-.22-3.694.849.874-3.601-.242-.381C2.516 15.67 2 13.9 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        ${isRec ? 'Diesen Tarif wählen' : 'Tarif anfragen'}
-      </a>
-    </td>`;
-  });
-
-  container.innerHTML = `
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead><tr class="ct-head">${headerCols}</tr></thead>
-        <tbody>
-          ${bodyRows}
-          <tr class="ct-cta-row">${ctaCols}</tr>
-        </tbody>
-      </table>
-    </div>`;
-}
-
-// Start
 init();
 </script>
 </body>
