@@ -757,6 +757,12 @@ function renderPage(row, allRows){
   // Show filter + table
   if(allTariffs.length > 0) {
     document.getElementById('filter-bar').style.display = 'block';
+    // Always reset filters to "alle" on load
+    activeFilters.art = 'alle';
+    activeFilters.sb = 'alle';
+    document.querySelectorAll('[data-filter]').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('[data-value="alle"]').forEach(p => p.classList.add('active'));
+    applyFilters();
     renderCompareTable();
   }
 
