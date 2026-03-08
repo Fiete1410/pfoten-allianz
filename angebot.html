@@ -456,8 +456,8 @@ async function init(){
   try {
     // Fetch with multiple proxy fallbacks
     const proxies = [
-      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
       u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
       u => `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
     ];
     let text = null;
