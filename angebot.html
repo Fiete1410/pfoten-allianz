@@ -454,11 +454,22 @@ async function init(){
   }
 
   try {
-    // Fetch Google Sheet as CSV (via CORS proxy)
-    const corsProxy = 'https://api.allorigins.win/raw?url=';
-    const res = await fetch(corsProxy + encodeURIComponent(CONFIG.SHEET_URL));
-    if(!res.ok) throw new Error('Sheet not reachable');
-    const text = await res.text();
+    // Fetch with multiple proxy fallbacks
+    const proxies = [
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+      u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+      u => `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
+    ];
+    let text = null;
+    for(const proxy of proxies){
+      try {
+        const r = await fetch(proxy(CONFIG.SHEET_URL));
+        if(!r.ok) continue;
+        const t = await r.text();
+        if(t && t.length > 10 && t.includes(',') && !t.startsWith('{')){ text = t; break; }
+      } catch(e){ continue; }
+    }
+    if(!text) throw new Error('All proxies failed');
     const rows = parseCSV(text);
 
     // Find matching row
