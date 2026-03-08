@@ -131,20 +131,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 
 /* ── FILTER BAR ── */
 .filter-bar{background:white;border-radius:24px;padding:28px 32px;box-shadow:0 8px 32px var(--sh);margin-bottom:40px}
-@media(max-width:640px){.filter-bar{padding:20px}}
+@media(max-width:640px){.filter-bar{padding:20px 16px}}
 .filter-bar-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin-bottom:20px;text-align:center}
 .filter-groups{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
-@media(max-width:640px){.filter-groups{flex-direction:column;gap:20px}}
-.filter-group{display:flex;flex-direction:column;gap:10px}
-.filter-group-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--terra);margin-bottom:2px}
-.filter-pills{display:flex;gap:8px;flex-wrap:wrap}
-.filter-pill{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;border:1.5px solid rgba(61,43,31,.12);background:white;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;transition:all .2s;user-select:none}
+@media(max-width:640px){.filter-groups{flex-direction:column;gap:20px;align-items:center}}
+.filter-group{display:flex;flex-direction:column;gap:10px;align-items:center}
+.filter-group-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--terra)}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.filter-pill{display:flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;border:1.5px solid rgba(61,43,31,.15);background:white;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;transition:all .2s;user-select:none}
 .filter-pill:hover{border-color:var(--terra);color:var(--terra)}
 .filter-pill.active{background:var(--terra);border-color:var(--terra);color:white;box-shadow:0 4px 14px rgba(200,96,58,.3)}
 .filter-pill .pill-icon{font-size:15px}
-.filter-results-hint{text-align:center;margin-top:16px;font-size:13px;color:var(--tl);min-height:20px}
-.tariff-card.hidden{display:none}
-.no-results{display:none;text-align:center;padding:48px 20px;color:var(--tl);font-size:15px}
+
+/* ── COMPARISON TABLE ── */
+.compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:20px;box-shadow:0 8px 40px var(--shl)}
+.compare-table{width:100%;border-collapse:collapse;background:white;min-width:520px}
+
+/* Header row */
+.ct-head{background:var(--forest)}
+.ct-head th{padding:20px 16px;text-align:center;color:white;font-size:13px;font-weight:600;letter-spacing:.03em;border-right:1px solid rgba(255,255,255,.08)}
+.ct-head th:first-child{text-align:left;width:200px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);border-right:1px solid rgba(255,255,255,.1)}
+.ct-head th:last-child{border-right:none}
+.ct-tarif-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;display:block;margin-bottom:4px}
+.ct-tarif-typ{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);display:block}
+.ct-tarif-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--amber);display:block;margin-top:8px;line-height:1}
+.ct-tarif-price-sub{font-size:11px;color:rgba(255,255,255,.4);display:block;margin-top:2px}
+.ct-rec-badge{display:inline-block;background:var(--terra);color:white;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:50px;margin-bottom:6px}
+.ct-head th.recommended{background:rgba(200,96,58,.25);position:relative}
+
+/* Body rows */
+.ct-row{border-bottom:1px solid rgba(61,43,31,.06);transition:background .15s}
+.ct-row:hover{background:rgba(250,246,240,.6)}
+.ct-row:last-child{border-bottom:none}
+.ct-row td{padding:13px 16px;text-align:center;font-size:13.5px;color:var(--td);border-right:1px solid rgba(61,43,31,.05)}
+.ct-row td:first-child{text-align:left;font-size:12.5px;font-weight:600;color:var(--tl);border-right:1px solid rgba(61,43,31,.08);background:rgba(250,246,240,.5)}
+.ct-row td:last-child{border-right:none}
+.ct-row td.recommended{background:rgba(200,96,58,.04)}
+.ct-row td.recommended td:first-child{background:none}
+.ct-check{color:var(--sage);font-size:16px}
+.ct-cross{color:#DDD;font-size:14px}
+.ct-val{font-weight:600;color:var(--td)}
+.ct-val.highlight{color:var(--terra);font-weight:700}
+
+/* CTA row */
+.ct-cta-row td{padding:20px 16px;background:rgba(250,246,240,.8);border-top:2px solid rgba(61,43,31,.06)}
+.ct-cta-row td:first-child{background:rgba(250,246,240,.8)}
+.ct-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+.ct-btn.primary{background:var(--wa);color:white;box-shadow:0 4px 16px rgba(37,211,102,.3)}
+.ct-btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.45)}
+.ct-btn.secondary{background:white;color:var(--tm);border:1.5px solid rgba(61,43,31,.12)}
+.ct-btn.secondary:hover{border-color:var(--terra);color:var(--terra)}
+.ct-btn svg{width:15px;height:15px;fill:currentColor}
+
+.no-results{display:none;text-align:center;padding:48px 20px;color:var(--tl);font-size:15px;background:white;border-radius:20px}
 .no-results.visible{display:block}
 
 /* ── WHY US ── */
@@ -267,6 +306,8 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
       <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-text">Std</span></div>
       <div class="cd-sep">:</div>
       <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-text">Min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-text">Sek</span></div>
     </div>
   </div>
   <div id="expired-note" style="display:none;background:#FFF0EE;border:1px solid var(--terra);border-radius:12px;padding:12px 20px;font-size:13.5px;color:var(--terra);font-weight:600;margin-top:8px">
@@ -282,15 +323,12 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
 
   <!-- FILTER BAR -->
   <div class="filter-bar" id="filter-bar" style="display:none">
-    <div class="filter-bar-title">🔍 Tarife filtern</div>
+    <div class="filter-bar-title">🔍 Tarif konfigurieren</div>
     <div class="filter-groups">
       <div class="filter-group">
         <div class="filter-group-label">Art der Absicherung</div>
         <div class="filter-pills" id="filter-art">
-          <div class="filter-pill active" data-filter="art" data-value="alle" onclick="setFilter('art','alle',this)">
-            <span class="pill-icon">🐾</span> Alle anzeigen
-          </div>
-          <div class="filter-pill" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
+          <div class="filter-pill active" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
             <span class="pill-icon">🏥</span> Krankenversicherung
           </div>
           <div class="filter-pill" data-filter="art" data-value="op" onclick="setFilter('art','op',this)">
@@ -301,22 +339,18 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
       <div class="filter-group">
         <div class="filter-group-label">Selbstbeteiligung</div>
         <div class="filter-pills" id="filter-sb">
-          <div class="filter-pill active" data-filter="sb" data-value="alle" onclick="setFilter('sb','alle',this)">
-            <span class="pill-icon">✨</span> Alle anzeigen
-          </div>
-          <div class="filter-pill" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
-            <span class="pill-icon">✅</span> Ohne SB
+          <div class="filter-pill active" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
+            <span class="pill-icon">✅</span> Ohne Selbstbeteiligung
           </div>
           <div class="filter-pill" data-filter="sb" data-value="mit" onclick="setFilter('sb','mit',this)">
-            <span class="pill-icon">💰</span> Mit SB
+            <span class="pill-icon">💰</span> Mit Selbstbeteiligung
           </div>
         </div>
       </div>
     </div>
-    <div class="filter-results-hint" id="filter-hint"></div>
   </div>
 
-  <div class="tariffs-grid" id="tariffs-grid"></div>
+  <div id="compare-container"></div>
   <div class="no-results" id="no-results">😕 Keine Tarife für diese Kombination – wähle andere Filter!</div>
 </section>
 
@@ -432,12 +466,14 @@ function startCountdown(targetDate){
     const days = Math.floor(diff / 86400000);
     const hours = Math.floor((diff % 86400000) / 3600000);
     const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
     document.getElementById('cd-days').textContent = pad(days);
     document.getElementById('cd-hours').textContent = pad(hours);
     document.getElementById('cd-mins').textContent = pad(mins);
+    document.getElementById('cd-secs').textContent = pad(secs);
   }
   tick();
-  setInterval(tick, 30000);
+  setInterval(tick, 1000);
 }
 
 function buildTariffCard(data, index, isRecommended){
@@ -610,9 +646,36 @@ const DEMO_ROW = {
   tarif3_feature3: 'Zahnbehandlungen abgedeckt',
   tarif3_feature4: 'Medikamente & Physiotherapie',
   tarif3_feature5: 'Weltweiter Versicherungsschutz',
+  tarif1_got: '2-fach',
+  tarif1_ambulant: '–',
+  tarif1_operationen: '3.000 € / Jahr',
+  tarif1_kuendigungsschutz: 'ja',
+  tarif1_vorsorge: '–',
+  tarif1_roentgen: 'ja',
+  tarif1_physio: 'ja',
+  tarif1_wartezeit_speziell: '3 Monate',
+  tarif1_zahn: '',
+  tarif2_got: '4-fach',
+  tarif2_ambulant: '–',
+  tarif2_operationen: 'Unbegrenzt',
+  tarif2_kuendigungsschutz: 'ja',
+  tarif2_vorsorge: '–',
+  tarif2_roentgen: 'ja',
+  tarif2_physio: 'ja',
+  tarif2_wartezeit_speziell: '3 Monate',
+  tarif2_zahn: '',
   tarif3_selbstbeteiligung: '250 € / Jahr',
   tarif3_wartezeit: '1 Monat',
   tarif3_empfehlung: '',
+  tarif3_got: '4-fach',
+  tarif3_ambulant: '1.500 € / Jahr',
+  tarif3_operationen: 'Unbegrenzt',
+  tarif3_kuendigungsschutz: 'ja',
+  tarif3_vorsorge: '100 € / Jahr',
+  tarif3_roentgen: 'ja',
+  tarif3_physio: 'ja',
+  tarif3_wartezeit_speziell: '3 Monate',
+  tarif3_zahn: 'ja',
 };
 
 // ═══════════════════════════════════════════════════════
@@ -661,40 +724,40 @@ function renderPage(row, allRows){
     if(targetDate) startCountdown(targetDate);
   }
 
-  // Build tariff cards
+  // Build tariff data with extended fields for comparison table
   const tariffData = isDemo ? DEMO_ROW : data;
-  const tariffs = [];
+  allTariffs = [];
+  currentHundename = hundename;
+
   for(let i=1; i<=5; i++){
     const name = tariffData[`tarif${i}_name`];
     if(!name || !name.trim()) break;
-    tariffs.push({
+    allTariffs.push({
       id: tariffData.id,
       hundename,
       name: tariffData[`tarif${i}_name`],
       typ: tariffData[`tarif${i}_typ`] || 'Versicherung',
       preis: tariffData[`tarif${i}_preis`],
-      feature1: tariffData[`tarif${i}_feature1`] || '',
-      feature2: tariffData[`tarif${i}_feature2`] || '',
-      feature3: tariffData[`tarif${i}_feature3`] || '',
-      feature4: tariffData[`tarif${i}_feature4`] || '',
-      feature5: tariffData[`tarif${i}_feature5`] || '',
-      feature6: tariffData[`tarif${i}_feature6`] || '',
       selbstbeteiligung: tariffData[`tarif${i}_selbstbeteiligung`] || '',
       wartezeit: tariffData[`tarif${i}_wartezeit`] || '',
+      wartezeit_speziell: tariffData[`tarif${i}_wartezeit_speziell`] || '',
       auszahlung: tariffData[`tarif${i}_auszahlung`] || '',
+      got: tariffData[`tarif${i}_got`] || '',
+      ambulant: tariffData[`tarif${i}_ambulant`] || '',
+      operationen: tariffData[`tarif${i}_operationen`] || '',
+      kuendigungsschutz: tariffData[`tarif${i}_kuendigungsschutz`] || '',
+      vorsorge: tariffData[`tarif${i}_vorsorge`] || '',
+      roentgen: tariffData[`tarif${i}_roentgen`] || '',
+      physio: tariffData[`tarif${i}_physio`] || '',
+      zahn: tariffData[`tarif${i}_zahn`] || '',
       empfehlung: (tariffData[`tarif${i}_empfehlung`] || '').toLowerCase() === 'ja',
     });
   }
 
-  const grid = document.getElementById('tariffs-grid');
-  if(tariffs.length === 2) grid.className = 'tariffs-grid two';
-  else if(tariffs.length >= 3) grid.className = 'tariffs-grid three';
-  else grid.className = 'tariffs-grid';
-
-  grid.innerHTML = tariffs.map((t,i) => buildTariffCard(t, i, t.empfehlung)).join('');
-  // Show filter bar if more than 1 tariff
-  if(tariffs.length > 1) {
+  // Show filter + table
+  if(allTariffs.length > 0) {
     document.getElementById('filter-bar').style.display = 'block';
+    renderCompareTable();
   }
 
   // Show page
@@ -709,58 +772,122 @@ function showError(){
 
 
 // ═══════════════════════════════════════════════════════
-// FILTER LOGIC
+// FILTER + COMPARISON TABLE LOGIC
 // ═══════════════════════════════════════════════════════
-const activeFilters = { art: 'alle', sb: 'alle' };
+const activeFilters = { art: 'kranken', sb: 'ohne' };
+let allTariffs = [];
+let currentHundename = '';
 
 function setFilter(group, value, el) {
   activeFilters[group] = value;
-  // Update pill styles
   document.querySelectorAll(`[data-filter="${group}"]`).forEach(p => p.classList.remove('active'));
   el.classList.add('active');
-  applyFilters();
+  renderCompareTable();
 }
 
-function applyFilters() {
-  const cards = document.querySelectorAll('.tariff-card');
-  let visible = 0;
-  cards.forEach(card => {
-    const art = (card.dataset.art || '').toLowerCase();
-    const sb = (card.dataset.sb || '').toLowerCase();
-    const sbNum = parseFloat(sb.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
+function renderCompareTable() {
+  const container = document.getElementById('compare-container');
+  const noResults = document.getElementById('no-results');
 
-    let showArt = activeFilters.art === 'alle' ||
-      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
-      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
+  // Filter tariffs
+  const filtered = allTariffs.filter(t => {
+    const art = (t.typ || '').toLowerCase();
+    const sb = (t.selbstbeteiligung || '').replace(/[^0-9.,]/g,'').replace(',','.');
+    const sbNum = parseFloat(sb) || 0;
 
-    let showSB = activeFilters.sb === 'alle' ||
-      (activeFilters.sb === 'ohne' && sbNum === 0) ||
-      (activeFilters.sb === 'mit' && sbNum > 0);
+    const matchArt = activeFilters.art === 'kranken'
+      ? art.includes('kranken')
+      : (art.includes('op') || art.includes('operation'));
 
-    if(showArt && showSB) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
+    const matchSB = activeFilters.sb === 'ohne' ? sbNum === 0 : sbNum > 0;
+
+    return matchArt && matchSB;
   });
 
-  const hint = document.getElementById('filter-hint');
-  const noResults = document.getElementById('no-results');
-  if(visible === 0) {
+  if (filtered.length === 0) {
+    container.innerHTML = '';
     noResults.classList.add('visible');
-    hint.textContent = '';
-  } else {
-    noResults.classList.remove('visible');
-    hint.textContent = visible === cards.length ? '' : `${visible} Tarif${visible !== 1 ? 'e' : ''} gefunden`;
+    return;
   }
+  noResults.classList.remove('visible');
 
-  // Re-layout grid
-  const grid = document.getElementById('tariffs-grid');
-  const visibleCards = [...cards].filter(c => !c.classList.contains('hidden'));
-  if(visibleCards.length === 1) grid.className = 'tariffs-grid';
-  else if(visibleCards.length === 2) grid.className = 'tariffs-grid two';
-  else grid.className = 'tariffs-grid three';
+  // Define table rows to show (label, key or special)
+  const rows = [
+    { label: 'Preis (€ pro Monat)', key: 'preis', type: 'price' },
+    { label: 'Selbstbeteiligung', key: 'selbstbeteiligung', type: 'val' },
+    { label: 'GOT Abrechnungssatz', key: 'got', type: 'val' },
+    { label: 'Ambulante Behandlungen pro Jahr', key: 'ambulant', type: 'val' },
+    { label: 'Operationen pro Jahr', key: 'operationen', type: 'val' },
+    { label: 'Kündigungsschutz', key: 'kuendigungsschutz', type: 'check' },
+    { label: 'Vorsorgepauschale', key: 'vorsorge', type: 'val' },
+    { label: 'Röntgen, MRT, CT, Ultraschall', key: 'roentgen', type: 'check' },
+    { label: 'Physiotherapie nach OP', key: 'physio', type: 'check' },
+    { label: 'Allgemeine Wartezeit', key: 'wartezeit', type: 'val' },
+    { label: 'Wartezeit bei ED, HD, Patella etc.', key: 'wartezeit_speziell', type: 'val' },
+    { label: 'Zahnbehandlung', key: 'zahn', type: 'check' },
+  ];
+
+  const waBase = `https://wa.me/${CONFIG.WA_NUMBER}`;
+
+  // Build header
+  let headerCols = `<th>Leistung</th>`;
+  filtered.forEach((t, i) => {
+    const isRec = t.empfehlung;
+    const price = formatPrice(t.preis);
+    headerCols += `<th class="${isRec ? 'recommended' : ''}">
+      ${isRec ? '<div class="ct-rec-badge">⭐ Empfehlung</div>' : ''}
+      <span class="ct-tarif-name">${t.name}</span>
+      <span class="ct-tarif-typ">${t.typ}</span>
+      ${price ? `<span class="ct-tarif-price">${price.euros}<span style="font-size:18px">,${price.cents}€</span></span><span class="ct-tarif-price-sub">pro Monat</span>` : ''}
+    </th>`;
+  });
+
+  // Build body rows
+  let bodyRows = '';
+  rows.forEach(row => {
+    let cols = `<td>${row.label}</td>`;
+    filtered.forEach(t => {
+      const isRec = t.empfehlung;
+      const val = t[row.key] || '';
+      let cell = '';
+      if (row.type === 'price') {
+        const p = formatPrice(t.preis);
+        cell = p ? `<span class="ct-val highlight">${p.euros},${p.cents}€</span>` : '–';
+      } else if (row.type === 'check') {
+        cell = val && val !== '–' && val !== 'nein' && val !== 'Nein'
+          ? `<span class="ct-check">✓</span>`
+          : `<span class="ct-cross">–</span>`;
+      } else {
+        cell = val ? `<span class="ct-val">${val}</span>` : `<span class="ct-cross">–</span>`;
+      }
+      cols += `<td class="${isRec ? 'recommended' : ''}">${cell}</td>`;
+    });
+    bodyRows += `<tr class="ct-row">${cols}</tr>`;
+  });
+
+  // Build CTA row
+  let ctaCols = `<td></td>`;
+  filtered.forEach(t => {
+    const isRec = t.empfehlung;
+    const waText = encodeURIComponent(`Hallo! Ich möchte den Tarif "${t.name}" für ${currentHundename} abschließen. Angebots-ID: ${t.id}`);
+    ctaCols += `<td class="${isRec ? 'recommended' : ''}">
+      <a class="ct-btn ${isRec ? 'primary' : 'secondary'}" href="${waBase}?text=${waText}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.853L.057 23.926l6.224-1.431C7.913 23.461 9.916 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.88 0-3.647-.5-5.173-1.376l-.371-.22-3.694.849.874-3.601-.242-.381C2.516 15.67 2 13.9 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        ${isRec ? 'Diesen Tarif wählen' : 'Tarif anfragen'}
+      </a>
+    </td>`;
+  });
+
+  container.innerHTML = `
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead><tr class="ct-head">${headerCols}</tr></thead>
+        <tbody>
+          ${bodyRows}
+          <tr class="ct-cta-row">${ctaCols}</tr>
+        </tbody>
+      </table>
+    </div>`;
 }
 
 // Start
