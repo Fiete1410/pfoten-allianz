@@ -836,11 +836,13 @@ function renderCompareTable() {
     const sb = (t.selbstbeteiligung || '').replace(/[^0-9.,]/g,'').replace(',','.');
     const sbNum = parseFloat(sb) || 0;
 
-    const matchArt = activeFilters.art === 'kranken'
-      ? art.includes('kranken')
-      : (art.includes('op') || art.includes('operation'));
+    const matchArt = activeFilters.art === 'alle' ||
+      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
+      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
 
-    const matchSB = activeFilters.sb === 'ohne' ? sbNum === 0 : sbNum > 0;
+    const matchSB = activeFilters.sb === 'alle' ||
+      (activeFilters.sb === 'ohne' && sbNum === 0) ||
+      (activeFilters.sb === 'mit' && sbNum > 0);
 
     return matchArt && matchSB;
   });
