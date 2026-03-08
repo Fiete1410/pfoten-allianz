@@ -204,6 +204,27 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
 .wa-float svg{width:28px;height:28px;fill:white}
 .wa-dot{position:absolute;top:0;right:0;width:14px;height:14px;background:#FF4444;border-radius:50%;border:2px solid var(--cream);animation:dotPulse 2s ease-in-out infinite}
 @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* ── SB TOGGLE ── */
+.sb-toggle-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sb-toggle-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl)}
+.sb-toggle{display:flex;gap:0;background:rgba(61,43,31,.07);border-radius:50px;padding:3px}
+.sb-btn{padding:7px 18px;border-radius:50px;border:none;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--tm);background:transparent}
+.sb-btn.active{background:white;color:var(--terra);box-shadow:0 2px 10px var(--sh)}
+
+/* ── WHY RECOMMENDED PANEL ── */
+.why-rec-row td{padding:0 !important;border-bottom:2px solid rgba(200,96,58,.15) !important}
+.why-rec-inner{background:linear-gradient(135deg,rgba(200,96,58,.06),rgba(212,137,58,.04));padding:20px 24px;display:none}
+.why-rec-inner.open{display:block;animation:fadeUp .3s ease}
+.why-rec-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;background:none;border:none;cursor:pointer;font-size:13px;font-weight:700;color:var(--terra);transition:opacity .2s}
+.why-rec-toggle:hover{opacity:.75}
+.why-rec-toggle.open .toggle-arrow{transform:rotate(180deg)}
+.toggle-arrow{display:inline-block;transition:transform .25s;font-size:11px}
+.why-rec-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.why-rec-item{flex:1;min-width:140px;background:white;border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px var(--sh)}
+.wri-icon{font-size:22px;margin-bottom:6px}
+.wri-title{font-size:12px;font-weight:700;color:var(--td);margin-bottom:3px}
+.wri-text{font-size:11.5px;color:var(--tl);line-height:1.5}
 </style>
 </head>
 <body>
@@ -271,6 +292,16 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   <div class="section-label">Unsere Empfehlung</div>
   <h2 class="section-title">Deine Tarif-Optionen</h2>
   <p class="section-sub">Speziell ausgewählt für <span id="hundename-tariff">…</span> – vergleiche und entscheide in Ruhe.</p>
+
+  <!-- SB TOGGLE (shown when tariffs have mixed SB values) -->
+  <div id="sb-toggle-wrap" class="sb-toggle-wrap" style="display:none">
+    <span class="sb-toggle-label">🔍 Selbstbeteiligung filtern:</span>
+    <div class="sb-toggle">
+      <button class="sb-btn active" onclick="setSBFilter('alle',this)">Alle</button>
+      <button class="sb-btn" onclick="setSBFilter('ohne',this)">Ohne SB</button>
+      <button class="sb-btn" onclick="setSBFilter('mit',this)">Mit SB</button>
+    </div>
+  </div>
 
   <!-- VARIANT A: Guided Steps (shown when variant=A or default) -->
   <div id="variant-a" style="display:none">
@@ -421,8 +452,72 @@ function parseCSV(text){
   });
 }
 
+// ── SB FILTER STATE ──
+let activeSBFilter = 'alle';
+let currentTableTariffs = [];
+let currentTableContainerId = '';
+
+function setSBFilter(val, btn){
+  activeSBFilter = val;
+  document.querySelectorAll('.sb-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Re-render the active table
+  if(currentTableContainerId){
+    let filtered = currentTableTariffs;
+    if(val === 'ohne') filtered = currentTableTariffs.filter(t => {
+      const sb = parseFloat(String(t.selbstbeteiligung).replace(/[^0-9.]/g,''));
+      return isNaN(sb) || sb === 0;
+    });
+    if(val === 'mit') filtered = currentTableTariffs.filter(t => {
+      const sb = parseFloat(String(t.selbstbeteiligung).replace(/[^0-9.]/g,''));
+      return !isNaN(sb) && sb > 0;
+    });
+    // If filter results in 0 tariffs, show all (never empty)
+    if(filtered.length === 0) filtered = currentTableTariffs;
+    document.getElementById(currentTableContainerId).innerHTML = buildTableHTML(filtered, currentHundename);
+  }
+}
+
+// ── BUILD WHY-RECOMMENDED REASONS ──
+function buildWhyRec(t){
+  const reasons = [];
+  if(t.operationen && t.operationen !== '–'){
+    reasons.push({icon:'🏥', title:'Hohes Jahreslimit', text:`Bis zu ${t.operationen} Deckung pro Jahr – echte Sicherheit bei großen Eingriffen.`});
+  }
+  if(t.vorsorge && t.vorsorge !== '–'){
+    reasons.push({icon:'💚', title:'Vorsorge inklusive', text:`${t.vorsorge} Vorsorgepauschale – Impfungen und Check-ups mitversichert.`});
+  }
+  if(t.zahn && t.zahn !== '–' && t.zahn.toLowerCase() !== 'nein'){
+    reasons.push({icon:'🦷', title:'Zahnschutz', text:'Zahnbehandlungen unter Narkose sind mitgedeckt – oft unterschätzt.'});
+  }
+  if(t.physio && t.physio !== '–' && t.physio.toLowerCase() !== 'nein'){
+    reasons.push({icon:'🏃', title:'Physio nach OP', text:'Physiotherapie nach Operationen inklusive – beschleunigt die Genesung.'});
+  }
+  if(t.kuendigungsschutz && t.kuendigungsschutz !== '–' && t.kuendigungsschutz.toLowerCase() !== 'nein'){
+    reasons.push({icon:'🔒', title:'Kündigungsschutz', text:'Der Versicherer kann nicht kündigen – selbst bei häufigen Schadenfällen.'});
+  }
+  if(t.roentgen && t.roentgen !== '–' && t.roentgen.toLowerCase() !== 'nein'){
+    reasons.push({icon:'🔬', title:'Bildgebung inklusive', text:'MRT, CT, Röntgen und Ultraschall ohne Aufpreis mitversichert.'});
+  }
+  // Always show at most 3 most relevant
+  const top = reasons.slice(0,3);
+  if(top.length === 0) return '';
+  return top.map(r=>`<div class="why-rec-item">
+    <div class="wri-icon">${r.icon}</div>
+    <div class="wri-title">${r.title}</div>
+    <div class="wri-text">${r.text}</div>
+  </div>`).join('');
+}
+
 // ── BUILD COMPARE TABLE HTML (shared by all variants) ──
 function buildTable(tariffs, hundename){
+  // Store state for SB filter re-rendering
+  currentTableTariffs = tariffs;
+  currentHundename = hundename;
+  return buildTableHTML(tariffs, hundename);
+}
+
+function buildTableHTML(tariffs, hundename){
   const rows = [
     {label:'Preis (€ pro Monat)', key:'preis', type:'price'},
     {label:'Selbstbeteiligung', key:'selbstbeteiligung', type:'val'},
@@ -438,6 +533,8 @@ function buildTable(tariffs, hundename){
     {label:'Zahnbehandlung', key:'zahn', type:'check'},
   ];
   const waBase = `https://wa.me/${CONFIG.WA_NUMBER}`;
+  const recIndex = tariffs.findIndex(t => t.empfehlung);
+  const colSpan = tariffs.length + 1;
 
   let headerCols = `<th>Leistung</th>`;
   tariffs.forEach(t=>{
@@ -470,6 +567,26 @@ function buildTable(tariffs, hundename){
     bodyRows += `<tr class="ct-row">${cols}</tr>`;
   });
 
+  // "Why recommended" expandable row — only if there's a recommendation
+  let whyRow = '';
+  if(recIndex >= 0){
+    const rec = tariffs[recIndex];
+    const whyContent = buildWhyRec(rec);
+    if(whyContent){
+      whyRow = `<tr class="why-rec-row">
+        <td colspan="${colSpan}" style="padding:0;border-bottom:2px solid rgba(200,96,58,.12)">
+          <button class="why-rec-toggle" id="why-toggle" onclick="toggleWhyRec(this)">
+            ⭐ Warum empfehlen wir <strong style="margin:0 4px">${rec.name}</strong> für ${hundename}?
+            <span class="toggle-arrow">▼</span>
+          </button>
+          <div class="why-rec-inner" id="why-rec-inner">
+            <div class="why-rec-grid">${whyContent}</div>
+          </div>
+        </td>
+      </tr>`;
+    }
+  }
+
   let ctaCols = `<td></td>`;
   tariffs.forEach(t=>{
     const wt = encodeURIComponent(`Hallo! Ich möchte den Tarif "${t.name}" für ${hundename} abschließen. Angebots-ID: ${t.id}`);
@@ -481,8 +598,15 @@ function buildTable(tariffs, hundename){
 
   return `<div class="compare-wrap"><table class="compare-table">
     <thead><tr class="ct-head">${headerCols}</tr></thead>
-    <tbody>${bodyRows}<tr class="ct-cta-row">${ctaCols}</tr></tbody>
+    <tbody>${bodyRows}${whyRow}<tr class="ct-cta-row">${ctaCols}</tr></tbody>
   </table></div>`;
+}
+
+function toggleWhyRec(btn){
+  const panel = document.getElementById('why-rec-inner');
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
 }
 
 // ── GLOBAL STATE ──
@@ -532,7 +656,9 @@ function selectGuidedType(typ){
 }
 
 function showGuidedResult(tariffs, labelText){
+  currentTableContainerId = 'compare-container-a';
   document.getElementById('guided-result-label').textContent = `✅ ${labelText}`;
+  maybeShowSBToggle(tariffs);
   document.getElementById('compare-container-a').innerHTML = buildTable(tariffs, currentHundename);
   document.getElementById('guided-result').style.display = 'block';
 }
@@ -545,8 +671,8 @@ function resetGuided(){
 // ── VARIANT B: BANNER + FULL TABLE ──
 function renderVariantB(){
   document.getElementById('variant-b').style.display = 'block';
+  currentTableContainerId = 'compare-container-b';
 
-  // Show recommendation banner if any tariff has empfehlung=ja
   const rec = allTariffs.find(t => t.empfehlung);
   if(rec){
     const p = formatPrice(rec.preis);
@@ -557,12 +683,14 @@ function renderVariantB(){
     document.getElementById('rec-banner-btn').href = waLink(waText);
   }
 
+  maybeShowSBToggle(allTariffs);
   document.getElementById('compare-container-b').innerHTML = buildTable(allTariffs, currentHundename);
 }
 
 // ── VARIANT C: STICKY + TABLE ──
 function renderVariantC(){
   document.getElementById('variant-c').style.display = 'block';
+  currentTableContainerId = 'compare-container-c';
 
   const rec = allTariffs.find(t => t.empfehlung);
   if(rec){
@@ -575,7 +703,15 @@ function renderVariantC(){
     document.getElementById('sticky-rec-btn').href = waLink(waText);
   }
 
+  maybeShowSBToggle(allTariffs);
   document.getElementById('compare-container-c').innerHTML = buildTable(allTariffs, currentHundename);
+}
+
+function maybeShowSBToggle(tariffs){
+  // Only show SB toggle if tariffs actually differ in Selbstbeteiligung
+  const sbValues = tariffs.map(t => parseFloat(String(t.selbstbeteiligung).replace(/[^0-9.]/g,'')));
+  const hasVariety = sbValues.some(v => !isNaN(v) && v > 0) && sbValues.some(v => isNaN(v) || v === 0);
+  document.getElementById('sb-toggle-wrap').style.display = hasVariety ? 'flex' : 'none';
 }
 
 // ── RENDER PAGE ──
