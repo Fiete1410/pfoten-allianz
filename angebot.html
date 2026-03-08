@@ -328,7 +328,10 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
       <div class="filter-group">
         <div class="filter-group-label">Art der Absicherung</div>
         <div class="filter-pills" id="filter-art">
-          <div class="filter-pill active" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
+          <div class="filter-pill active" data-filter="art" data-value="alle" onclick="setFilter('art','alle',this)">
+            <span class="pill-icon">🐾</span> Alle
+          </div>
+          <div class="filter-pill" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
             <span class="pill-icon">🏥</span> Krankenversicherung
           </div>
           <div class="filter-pill" data-filter="art" data-value="op" onclick="setFilter('art','op',this)">
@@ -339,7 +342,10 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
       <div class="filter-group">
         <div class="filter-group-label">Selbstbeteiligung</div>
         <div class="filter-pills" id="filter-sb">
-          <div class="filter-pill active" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
+          <div class="filter-pill active" data-filter="sb" data-value="alle" onclick="setFilter('sb','alle',this)">
+            <span class="pill-icon">✨</span> Alle
+          </div>
+          <div class="filter-pill" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
             <span class="pill-icon">✅</span> Ohne Selbstbeteiligung
           </div>
           <div class="filter-pill" data-filter="sb" data-value="mit" onclick="setFilter('sb','mit',this)">
