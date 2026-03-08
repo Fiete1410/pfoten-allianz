@@ -455,7 +455,7 @@ async function init(){
 
   try {
     // Fetch Google Sheet as CSV (via CORS proxy)
-    const corsProxy = 'https://corsproxy.io/?';
+    const corsProxy = 'https://api.allorigins.win/raw?url=';
     const res = await fetch(corsProxy + encodeURIComponent(CONFIG.SHEET_URL));
     if(!res.ok) throw new Error('Sheet not reachable');
     const text = await res.text();
