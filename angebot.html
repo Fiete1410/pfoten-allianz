@@ -790,6 +790,33 @@ const activeFilters = { art: 'kranken', sb: 'ohne' };
 let allTariffs = [];
 let currentHundename = '';
 
+function applyFilters() {
+  const cards = document.querySelectorAll('.tariff-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const art = (card.dataset.art || '').toLowerCase();
+    const sb = (card.dataset.sb || '').toLowerCase();
+    const sbNum = parseFloat(sb.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
+    const showArt = activeFilters.art === 'alle' ||
+      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
+      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
+    const showSB = activeFilters.sb === 'alle' ||
+      (activeFilters.sb === 'ohne' && sbNum === 0) ||
+      (activeFilters.sb === 'mit' && sbNum > 0);
+    if(showArt && showSB){ card.classList.remove('hidden'); visible++; }
+    else { card.classList.add('hidden'); }
+  });
+  const hint = document.getElementById('filter-hint');
+  const noResults = document.getElementById('no-results');
+  if(visible === 0){ noResults.classList.add('visible'); if(hint) hint.textContent=''; }
+  else { noResults.classList.remove('visible'); if(hint) hint.textContent = visible === cards.length ? '' : `${visible} Tarif${visible!==1?'e':''} gefunden`; }
+  const grid = document.getElementById('tariffs-grid');
+  const vis = [...cards].filter(c=>!c.classList.contains('hidden'));
+  if(vis.length===1) grid.className='tariffs-grid';
+  else if(vis.length===2) grid.className='tariffs-grid two';
+  else grid.className='tariffs-grid three';
+}
+
 function setFilter(group, value, el) {
   activeFilters[group] = value;
   document.querySelectorAll(`[data-filter="${group}"]`).forEach(p => p.classList.remove('active'));
