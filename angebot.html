@@ -128,6 +128,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;d
 .dr-label{color:var(--tl)}
 .dr-val{font-weight:600;color:var(--td)}
 
+
+/* ── FILTER BAR ── */
+.filter-bar{background:white;border-radius:24px;padding:28px 32px;box-shadow:0 8px 32px var(--sh);margin-bottom:40px}
+@media(max-width:640px){.filter-bar{padding:20px}}
+.filter-bar-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin-bottom:20px;text-align:center}
+.filter-groups{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+@media(max-width:640px){.filter-groups{flex-direction:column;gap:20px}}
+.filter-group{display:flex;flex-direction:column;gap:10px}
+.filter-group-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--terra);margin-bottom:2px}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap}
+.filter-pill{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;border:1.5px solid rgba(61,43,31,.12);background:white;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;transition:all .2s;user-select:none}
+.filter-pill:hover{border-color:var(--terra);color:var(--terra)}
+.filter-pill.active{background:var(--terra);border-color:var(--terra);color:white;box-shadow:0 4px 14px rgba(200,96,58,.3)}
+.filter-pill .pill-icon{font-size:15px}
+.filter-results-hint{text-align:center;margin-top:16px;font-size:13px;color:var(--tl);min-height:20px}
+.tariff-card.hidden{display:none}
+.no-results{display:none;text-align:center;padding:48px 20px;color:var(--tl);font-size:15px}
+.no-results.visible{display:block}
+
 /* ── WHY US ── */
 .why{background:var(--forest);padding:80px 48px;position:relative;overflow:hidden}
 @media(max-width:640px){.why{padding:60px 24px}}
@@ -260,7 +279,45 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
   <div class="section-label">Unsere Empfehlung</div>
   <h2 class="section-title">Deine Tarif-Optionen</h2>
   <p class="section-sub" id="tariff-intro">Speziell ausgewählt für <span id="hundename-tariff">…</span> – vergleiche und entscheide in Ruhe.</p>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filter-bar" style="display:none">
+    <div class="filter-bar-title">🔍 Tarife filtern</div>
+    <div class="filter-groups">
+      <div class="filter-group">
+        <div class="filter-group-label">Art der Absicherung</div>
+        <div class="filter-pills" id="filter-art">
+          <div class="filter-pill active" data-filter="art" data-value="alle" onclick="setFilter('art','alle',this)">
+            <span class="pill-icon">🐾</span> Alle anzeigen
+          </div>
+          <div class="filter-pill" data-filter="art" data-value="kranken" onclick="setFilter('art','kranken',this)">
+            <span class="pill-icon">🏥</span> Krankenversicherung
+          </div>
+          <div class="filter-pill" data-filter="art" data-value="op" onclick="setFilter('art','op',this)">
+            <span class="pill-icon">🔬</span> OP-Versicherung
+          </div>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-group-label">Selbstbeteiligung</div>
+        <div class="filter-pills" id="filter-sb">
+          <div class="filter-pill active" data-filter="sb" data-value="alle" onclick="setFilter('sb','alle',this)">
+            <span class="pill-icon">✨</span> Alle anzeigen
+          </div>
+          <div class="filter-pill" data-filter="sb" data-value="ohne" onclick="setFilter('sb','ohne',this)">
+            <span class="pill-icon">✅</span> Ohne SB
+          </div>
+          <div class="filter-pill" data-filter="sb" data-value="mit" onclick="setFilter('sb','mit',this)">
+            <span class="pill-icon">💰</span> Mit SB
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-results-hint" id="filter-hint"></div>
+  </div>
+
   <div class="tariffs-grid" id="tariffs-grid"></div>
+  <div class="no-results" id="no-results">😕 Keine Tarife für diese Kombination – wähle andere Filter!</div>
 </section>
 
 <!-- WHY -->
@@ -401,7 +458,7 @@ function buildTariffCard(data, index, isRecommended){
   const animDelay = index * 0.1;
 
   return `
-    <div class="tariff-card${isRecommended?' recommended':''}" style="animation-delay:${animDelay}s">
+    <div class="tariff-card${isRecommended?' recommended':''}" style="animation-delay:${animDelay}s" data-art="${data.typ||''}" data-sb="${data.selbstbeteiligung||'0'}">
       ${isRecommended ? '<div class="rec-badge">⭐ Empfehlung</div>' : ''}
       <div class="tariff-header">
         <div class="tariff-type">${data.typ || 'Krankenversicherung'}</div>
@@ -635,6 +692,10 @@ function renderPage(row, allRows){
   else grid.className = 'tariffs-grid';
 
   grid.innerHTML = tariffs.map((t,i) => buildTariffCard(t, i, t.empfehlung)).join('');
+  // Show filter bar if more than 1 tariff
+  if(tariffs.length > 1) {
+    document.getElementById('filter-bar').style.display = 'block';
+  }
 
   // Show page
   document.getElementById('loading').classList.add('hidden');
@@ -644,6 +705,62 @@ function renderPage(row, allRows){
 function showError(){
   document.getElementById('loading').classList.add('hidden');
   document.getElementById('error').style.display = 'flex';
+}
+
+
+// ═══════════════════════════════════════════════════════
+// FILTER LOGIC
+// ═══════════════════════════════════════════════════════
+const activeFilters = { art: 'alle', sb: 'alle' };
+
+function setFilter(group, value, el) {
+  activeFilters[group] = value;
+  // Update pill styles
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.tariff-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const art = (card.dataset.art || '').toLowerCase();
+    const sb = (card.dataset.sb || '').toLowerCase();
+    const sbNum = parseFloat(sb.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
+
+    let showArt = activeFilters.art === 'alle' ||
+      (activeFilters.art === 'kranken' && art.includes('kranken')) ||
+      (activeFilters.art === 'op' && (art.includes('op') || art.includes('operation')));
+
+    let showSB = activeFilters.sb === 'alle' ||
+      (activeFilters.sb === 'ohne' && sbNum === 0) ||
+      (activeFilters.sb === 'mit' && sbNum > 0);
+
+    if(showArt && showSB) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  const hint = document.getElementById('filter-hint');
+  const noResults = document.getElementById('no-results');
+  if(visible === 0) {
+    noResults.classList.add('visible');
+    hint.textContent = '';
+  } else {
+    noResults.classList.remove('visible');
+    hint.textContent = visible === cards.length ? '' : `${visible} Tarif${visible !== 1 ? 'e' : ''} gefunden`;
+  }
+
+  // Re-layout grid
+  const grid = document.getElementById('tariffs-grid');
+  const visibleCards = [...cards].filter(c => !c.classList.contains('hidden'));
+  if(visibleCards.length === 1) grid.className = 'tariffs-grid';
+  else if(visibleCards.length === 2) grid.className = 'tariffs-grid two';
+  else grid.className = 'tariffs-grid three';
 }
 
 // Start
