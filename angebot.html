@@ -187,62 +187,6 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
 .footer-logo span{color:var(--terra-l)}
 .footer-text{font-size:12px;color:rgba(255,255,255,.4)}
 
-/* ── A: URGENCY BAR (top) ── */
-.urgency-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(90deg,var(--terra),var(--amber));color:white;text-align:center;font-size:13px;font-weight:600;padding:9px 20px;display:flex;align-items:center;justify-content:center;gap:10px;transform:translateY(-100%);transition:transform .4s ease}
-.urgency-bar.visible{transform:translateY(0)}
-.urgency-bar strong{font-weight:800}
-.ub-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:18px;line-height:1;padding:0 4px}
-.urgency-bar.visible ~ nav{top:40px}
-
-/* ── B: TARIFF CARDS (replaces table as primary view) ── */
-.tariff-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
-@media(max-width:700px){.tariff-cards{grid-template-columns:1fr;max-width:380px;margin-left:auto;margin-right:auto}}
-.tariff-card{background:white;border-radius:24px;padding:28px 24px;border:2px solid rgba(61,43,31,.08);cursor:pointer;transition:all .25s;position:relative;text-align:center}
-.tariff-card:hover{border-color:var(--terra);transform:translateY(-4px);box-shadow:0 16px 48px var(--shl)}
-.tariff-card.rec{border-color:var(--terra);box-shadow:0 12px 40px rgba(200,96,58,.2);transform:translateY(-6px)}
-.tariff-card.rec::before{content:'⭐ Empfehlung';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--terra);color:white;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 14px;border-radius:50px;white-space:nowrap}
-.tc-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--td);margin-bottom:4px}
-.tc-typ{font-size:11px;color:var(--tl);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
-.tc-price{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:var(--terra);line-height:1}
-.tc-price sup{font-size:18px;vertical-align:super}
-.tc-price-sub{font-size:12px;color:var(--tl);margin-bottom:20px;margin-top:4px}
-.tc-features{list-style:none;text-align:left;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
-.tc-features li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tm)}
-.tc-features li .tf-icon{font-size:14px;flex-shrink:0}
-.tc-features li .tf-no{color:#DDD}
-.tc-details-toggle{font-size:12px;color:var(--terra);font-weight:600;cursor:pointer;background:none;border:none;width:100%;text-align:center;padding:4px 0;margin-bottom:16px}
-.tc-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:14px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s}
-.tc-cta.primary{background:var(--wa);color:white;box-shadow:0 4px 16px rgba(37,211,102,.3)}
-.tc-cta.primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
-.tc-cta.secondary{background:var(--cream);color:var(--tm);border:1.5px solid rgba(61,43,31,.12)}
-.tc-cta.secondary:hover{border-color:var(--terra);color:var(--terra)}
-.tc-cta svg{width:15px;height:15px;fill:currentColor}
-
-/* ── C: NEXT STEPS ── */
-.next-steps{background:white;border-radius:20px;padding:28px 32px;box-shadow:0 4px 24px var(--sh);margin-bottom:32px;display:none}
-.next-steps.visible{display:block;animation:fadeUp .4s ease}
-.ns-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);text-align:center;margin-bottom:20px}
-.ns-steps{display:flex;gap:0;align-items:flex-start;justify-content:center}
-@media(max-width:600px){.ns-steps{flex-direction:column;gap:12px}}
-.ns-step{flex:1;text-align:center;position:relative}
-.ns-step:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:16px;color:var(--tl);font-size:16px}
-@media(max-width:600px){.ns-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}}
-.ns-icon{width:44px;height:44px;border-radius:50%;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px}
-.ns-label{font-size:12px;font-weight:700;color:var(--td);margin-bottom:2px}
-.ns-sub{font-size:11px;color:var(--tl)}
-
-/* ── D: TRUST BAR (above CTA) ── */
-.trust-bar{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;padding:16px 20px;background:rgba(90,138,106,.06);border-radius:14px;border:1px solid rgba(90,138,106,.15)}
-.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--sage)}
-.trust-item span{font-size:15px}
-
-/* ── TABLE TOGGLE ── */
-.table-toggle-wrap{text-align:center;margin-bottom:16px}
-.table-toggle-btn{background:none;border:1.5px solid rgba(61,43,31,.15);border-radius:50px;padding:8px 22px;font-size:13px;font-weight:600;color:var(--tl);cursor:pointer;transition:all .2s}
-.table-toggle-btn:hover{border-color:var(--terra);color:var(--terra)}
-#detail-table-wrap{display:none}
-#detail-table-wrap.open{display:block;animation:fadeUp .3s ease}
-
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:50;background:var(--wa);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);transition:all .25s;text-decoration:none}
 .wa-float:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.6)}
 .wa-float svg{width:28px;height:28px;fill:white}
@@ -268,13 +212,7 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
 
 <div id="main" style="display:none">
 
-<!-- A: URGENCY BAR -->
-<div class="urgency-bar" id="urgency-bar">
-  <span>⏰ Dieses Angebot für <strong id="ub-hundename">…</strong> läuft in <strong id="ub-days">…</strong> Tagen ab</span>
-  <button class="ub-close" onclick="document.getElementById('urgency-bar').classList.remove('visible')">✕</button>
-</div>
-
-<nav style="transition:top .4s">
+<nav>
   <a class="logo" href="/pfoten-allianz/">
     <div class="logo-icon">🐾</div>
     <div class="logo-name">Pfoten<span>-Allianz</span></div>
@@ -341,35 +279,8 @@ footer{background:var(--brown);padding:28px 48px;display:flex;align-items:center
     </div>
   </div>
 
-  <!-- B: TARIFF CARDS -->
-  <div id="tariff-cards-container"></div>
-
-  <!-- D: TRUST BAR -->
-  <div class="trust-bar" id="trust-bar" style="display:none">
-    <div class="trust-item"><span>🔒</span> Kein Vertrag bis du unterschreibst</div>
-    <div class="trust-item"><span>💬</span> Antwort in unter 5 Minuten</div>
-    <div class="trust-item"><span>✅</span> 100% kostenlose Beratung</div>
-    <div class="trust-item"><span>⭐</span> 4.9/5 von 500+ Kunden</div>
-  </div>
-
-  <!-- C: NEXT STEPS (shown after card click) -->
-  <div class="next-steps" id="next-steps">
-    <div class="ns-title">Was passiert als nächstes?</div>
-    <div class="ns-steps">
-      <div class="ns-step"><div class="ns-icon">💬</div><div class="ns-label">Du klickst</div><div class="ns-sub">WhatsApp öffnet sich</div></div>
-      <div class="ns-step"><div class="ns-icon">⚡</div><div class="ns-label">Wir melden uns</div><div class="ns-sub">In unter 5 Minuten</div></div>
-      <div class="ns-step"><div class="ns-icon">📋</div><div class="ns-label">Antrag digital</div><div class="ns-sub">Alles online, kein Papier</div></div>
-      <div class="ns-step"><div class="ns-icon">🎉</div><div class="ns-label">Fertig!</div><div class="ns-sub">Bello ist versichert</div></div>
-    </div>
-  </div>
-
-  <!-- DETAIL TABLE TOGGLE -->
-  <div class="table-toggle-wrap">
-    <button class="table-toggle-btn" onclick="toggleDetailTable(this)">📊 Alle Leistungen im Detail vergleichen ▼</button>
-  </div>
-  <div id="detail-table-wrap">
-    <div id="compare-container"></div>
-  </div>
+  <!-- COMPARE TABLE -->
+  <div id="compare-container"></div>
 </section>
 
 <section class="why">
@@ -478,67 +389,7 @@ function selectSB(val){
   document.getElementById('btn-ohne').classList.toggle('active', val === 'ohne');
   document.getElementById('btn-mit').classList.toggle('active', val === 'mit');
   renderTable();
-  renderCards();
 }
-
-// ── TOGGLE DETAIL TABLE ──
-function toggleDetailTable(btn){
-  const wrap = document.getElementById('detail-table-wrap');
-  wrap.classList.toggle('open');
-  btn.textContent = wrap.classList.contains('open')
-    ? '📊 Detailvergleich ausblenden ▲'
-    : '📊 Alle Leistungen im Detail vergleichen ▼';
-}
-
-// ── RENDER TARIFF CARDS (B) ──
-function renderCards(){
-  const sb = currentSB;
-  const container = document.getElementById('tariff-cards-container');
-  if(!container || !allTariffs.length) return;
-
-  const cardFeatures = {
-    Basis:   ['🏥 2.500 € OP-Limit / Jahr','📡 Röntgen, MRT, CT','✅ Kündigungsschutz','❌ Keine Vorsorge','❌ Kein Zahnschutz'],
-    Smart:   ['🏥 5.000 € OP-Limit / Jahr','📡 Röntgen, MRT, CT','✅ Kündigungsschutz','💚 Vorsorge 50–200 €','🦷 Zahnbehandlung unter Narkose'],
-    Komfort: ['🏥 10.000 € OP-Limit / Jahr','📡 Röntgen, MRT, CT','✅ Kündigungsschutz','💚 Vorsorge 100–250 €','🦷 Zahnbehandlung bis 2.500 €'],
-  };
-
-  let html = '<div class="tariff-cards">';
-  allTariffs.forEach(t => {
-    const rawPrice = sb === 'mit' ? t.preis_mit_sb : t.preis_ohne_sb;
-    const p = formatPrice(rawPrice);
-    const isRec = t.empfehlung;
-    const features = cardFeatures[t.name] || [];
-    const wt = encodeURIComponent(`Hallo! Ich möchte den Tarif "${t.name}" (${p ? p.euros+','+p.cents+'€/Monat' : ''}, ${sb === 'mit' ? 'mit' : 'ohne'} SB) für ${currentHundename} abschließen.`);
-    const waHref = `https://wa.me/${CONFIG.WA_NUMBER}?text=${wt}`;
-
-    html += `<div class="tariff-card${isRec?' rec':''}" >
-      <div class="tc-name">${t.name}</div>
-      <div class="tc-typ">${t.typ}</div>
-      ${p ? `<div class="tc-price"><sup>€</sup>${p.euros}<span style="font-size:22px">,${p.cents}</span></div><div class="tc-price-sub">pro Monat</div>` : ''}
-      <ul class="tc-features">
-        ${features.map(f => {
-          const isNo = f.startsWith('❌');
-          return `<li><span class="tf-icon${isNo?' tf-no':''}">${f.slice(0,2)}</span><span style="${isNo?'color:var(--tl)':''}">${f.slice(2).trim()}</span></li>`;
-        }).join('')}
-      </ul>
-      <a class="tc-cta ${isRec?'primary':'secondary'}" href="${waHref}" target="_blank" rel="noopener" onclick="showNextSteps()">
-        ${WA_SVG} ${isRec ? 'Diesen Tarif wählen' : 'Tarif anfragen'}
-      </a>
-    </div>`;
-  });
-  html += '</div>';
-  container.innerHTML = html;
-
-  // Show trust bar
-  document.getElementById('trust-bar').style.display = 'flex';
-}
-
-function showNextSteps(){
-  const ns = document.getElementById('next-steps');
-  ns.classList.add('visible');
-  setTimeout(() => ns.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
-}
-
 
 // ── WHY RECOMMENDED ──
 function buildWhyRec(t, sb){
@@ -733,21 +584,6 @@ function renderPage(data){
   }
 
   renderTable();
-  renderCards();
-
-  // A: Urgency bar
-  if(gueltigBis){
-    const parts = gueltigBis.split('.').map(Number);
-    if(parts.length===3){
-      const diff = new Date(parts[2],parts[1]-1,parts[0],23,59,59) - new Date();
-      const days = Math.ceil(diff / 86400000);
-      if(days > 0 && days <= 30){
-        document.getElementById('ub-hundename').textContent = hundename;
-        document.getElementById('ub-days').textContent = days;
-        setTimeout(() => document.getElementById('urgency-bar').classList.add('visible'), 800);
-      }
-    }
-  }
 
   document.getElementById('loading').classList.add('hidden');
   document.getElementById('main').style.display = 'block';
